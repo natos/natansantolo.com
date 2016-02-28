@@ -6,8 +6,27 @@
     <description>Recent content on Natan Santolo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Sat, 27 Feb 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Feb 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.natansantolo.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Scrolling performance</title>
+      <link>http://www.natansantolo.com/post/scrolling-performance/</link>
+      <pubDate>Mon, 29 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.natansantolo.com/post/scrolling-performance/</guid>
+      <description>&lt;p&gt;TODO: write about fixing scrolling issue&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;will-change: transform; // creates a new paint layer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;script src=&#34;//gist.github.com/natos/5632861.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://fourkitchens.com/blog/article/fix-scrolling-performance-css-will-change-property&#34;&gt;Borrowed the idea from&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope you find this useful :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Angular Switchery</title>
