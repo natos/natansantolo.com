@@ -1,9 +1,11 @@
 title = "Natan Santolo"
 languagecode = "en_US"
+
 contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 builddrafts = false
+
 baseurl = "http://www.natansantolo.com/"
 
 relativeurls = false

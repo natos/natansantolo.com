@@ -1,15 +1,13 @@
 +++
-title = "Meaningful Interfaces"
-description = "Be thoughtful when desiging your code."
+title = "Hugo, my new best friend"
+description = "A lighting fast complete tool."
 tags = [ "patterns", "javascript"]
-date = "2013-05-23"
+date = "2016-06-23"
 categories = [
-  "JavaScript"
+  "Hugo"
 ]
-slug = "meaningful-javaScript-interfaces"
+slug = "hugo-my-new-best-friend"
 +++
-
-![Iron Man's first helmet](/assets/images/meaningful-javascript-interfaces/stark.jpg)
 
 Object literals in javascript are awesome, we can use them to improve the way we are communicating our components interfaces, make them sort of self-explanatory. There is plenty of good docs about [working with objects around the web](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects). Here an *illustrative* example how to create a easy to understand interface to query an API:
 
