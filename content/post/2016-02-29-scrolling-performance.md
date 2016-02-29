@@ -7,7 +7,7 @@ categories = [
   "CSS"
 ]
 slug = "scrolling-performance"
-#draft = true
+draft = true
 +++
 
 TODO: write about fixing scrolling issue
