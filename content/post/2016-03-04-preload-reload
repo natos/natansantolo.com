@@ -1,0 +1,17 @@
++++
+title = "Preload, reload"
+description = "Loading heavy assets can be expensive."
+tags = [ "patterns", "javascript"]
+date = "2016-03-04"
+categories = [
+  "Hugo"
+]
+slug = "preload-reload"
+draft = true
++++
+
+Source:
+https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/
+
+
+I hope you find this useful :)
