@@ -25,7 +25,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/angular-switchery/console.png&#34; alt=&#34;Spaaza Screenshot&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s &lt;a href=&#34;http://natos.github.io/angular-switchery/&#34;&gt;Angular Switchery&lt;/a&gt;, &lt;a href=&#34;https://docs.angularjs.org/guide/directive&#34;&gt;a directive&lt;/a&gt; that transform a simple checkbox into a switch that, and supports bindings to scope variables, to keep view and data in sync. You&amp;rsquo;ll find the code and install instructions in &lt;a href=&#34;https://github.com/natos/angular-switchery&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s &lt;a href=&#34;http://natos.github.io/angular-switchery/&#34;&gt;Angular Switchery&lt;/a&gt;, &lt;a href=&#34;https://docs.angularjs.org/guide/directive&#34;&gt;a directive&lt;/a&gt; that transform a simple checkbox into a switch, and supports two way bindings to scope variables, to keep view and data in sync. You&amp;rsquo;ll find the code and install instructions in &lt;a href=&#34;https://github.com/natos/angular-switchery&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Run this JSFiddle to see it working or &lt;a href=&#34;http://natos.github.io/angular-switchery/&#34;&gt;check the demo&lt;/a&gt;&lt;/p&gt;
 

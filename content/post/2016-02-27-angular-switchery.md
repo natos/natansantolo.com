@@ -20,7 +20,7 @@ I've used it along different projects, I'm really happy with it. But when I trie
 
 ![Spaaza Screenshot](/assets/images/angular-switchery/console.png)
 
-Here's [Angular Switchery](http://natos.github.io/angular-switchery/), [a directive](https://docs.angularjs.org/guide/directive) that transform a simple checkbox into a switch that, and supports bindings to scope variables, to keep view and data in sync. You'll find the code and install instructions in [Github](https://github.com/natos/angular-switchery).
+Here's [Angular Switchery](http://natos.github.io/angular-switchery/), [a directive](https://docs.angularjs.org/guide/directive) that transform a simple checkbox into a switch, and supports two way bindings to scope variables, to keep view and data in sync. You'll find the code and install instructions in [Github](https://github.com/natos/angular-switchery).
 
 Run this JSFiddle to see it working or [check the demo](http://natos.github.io/angular-switchery/)
 
