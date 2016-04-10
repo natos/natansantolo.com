@@ -2,12 +2,14 @@
  * Instagrams.js
  *
  * Renders latest instagramas
- * @require jsonp.js
  */
 
-(function($w, $d) {
+// (function($w, $d) {
 
-    'use strict';
+    var $w = window,
+        $d = document;
+
+    // 'use strict';
 
     var API_PREFIX = 'https://api.instagram.com/v1/users/self/media/recent/?';
 
@@ -71,6 +73,57 @@
      */
     function isBoolean(b) {
         return typeof b === 'boolean' || (typeof b === 'object' && typeof b.valueOf() === 'boolean');
+    }
+
+    var count = 0, done = 0;
+
+    function serialize(obj, prefix) {
+        var str = [];
+        for(var p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+                str.push(typeof v == "object" ?
+                    serialize(v, k) :
+                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
+    }
+
+    function load(url) {
+        var script = document.createElement('script'),
+        done = 0;
+        script.src = url;
+        script.async = true;
+        script.onload = script.onreadystatechange = function() {
+            if (!done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                done = true;
+                script.onload = script.onreadystatechange = null;
+                if ( script && script.parentNode ) {
+                    script.parentNode.removeChild( script );
+                }
+            }
+        };
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    function get(url, params, callback) {
+        var query = '';
+        if (typeof params === 'function' && typeof callback === 'undefined') {
+            callback = params;
+        } else {
+            query = serialize(params);
+        }
+        count += 1;
+        var fname = 'phealer' + '_' + new Date().valueOf() + count;
+        window[fname] = function (response) {
+            callback && callback(response);
+            try {
+                delete window[fname];
+            } catch (e) {}
+            window[fname] = null;
+        }
+        load(url + query + "&amp;callback=" + fname);
     }
 
     /**
@@ -140,7 +193,7 @@
      * Gets from the provided source though JSONP and executes the callback
      * @public @method get
      * @param {string} source - URL of the source of content
-     * @return {object} jsonp - JSON-P loader
+     * @return {object} this
      */
     Instagramas.prototype.get = function(source, callback) {
         var $this = this;
@@ -150,7 +203,8 @@
             $this.element.setAttribute('data-state', 'get:success');
             callback.call($this, response);
         }
-        return jsonp.get(source, success);
+        get(source, success);
+        return $this;
     };
 
     /**
@@ -168,6 +222,7 @@
             $this.children.push(new Instagrama(response.data[i], $this));
         }
         $this.element.setAttribute('data-state', 'created');
+        return $this;
     };
 
     /**
@@ -205,7 +260,6 @@
             tags = '',
             likes = 0;
 
-        // figure = $d.createElement('figure');
         figure = HTMLElement.new('figure');
         figure.className = 'instagrama-' + $this.data.type;
 
@@ -216,7 +270,6 @@
         a.href = $this.data.link;
         figure.appendChild(a);
 
-        // img = $d.createElement('img');
         img = HTMLElement.new('img');
         img.alt = $this.data.caption.text;
         img.src = $this.data.images[$this.parent.renderType].url;
@@ -227,7 +280,6 @@
 
         // likes
         if ($this.parent.showLikes) {
-            // likescaption = $d.createElement('figcaption');
             likescaption = HTMLElement.new('figcaption');
             likescaption.className = 'instagrama-likes';
             likescaption.innerHTML = $this.data.likes.count;
@@ -243,8 +295,6 @@
                 }
                 tags += template.tag.replace('{{tag}}', $this.data.tags[i]);
             }
-
-            // tagscaption = $d.createElement('figcaption');
             tagscaption = HTMLElement.new('figcaption');
             tagscaption.className = 'instagrama-tags';
             tagscaption.innerHTML = tags;
@@ -256,38 +306,46 @@
         return $this;
     };
 
+    var context = this;
+    /**
+     * @param {function} f The function to execute when the DOM is ready
+     */
+    function _r(f) {
+        /in/.test(document.readyState)?
+            setTimeout(function() { _r.call(context, f) },9):
+            f.call(context)
+    }
     /*
     * @private
     * Will find all instances of instagramas in the document
     */
     var instagramas = $d.querySelectorAll('.instagramas');
-    if (instagramas === undefined || instagramas === null) {
-        return;
+    if (instagramas !== undefined || instagramas !== null) {
+        /**
+        * @private
+        * Instagramas namespace can be predefined by setting a string in the global
+        * variable `_instagramas_namespace` with the name of your choosing, otherwise
+        * will automatically use the defautl value `_Instagramas`.
+        */
+        var namespace = $w._instagramas_namespace || '_Instagramas';
+        $w._instagramas_namespace = namespace;
+
+        /**
+        * @public
+        * Define the namespace to store instagramas instances.
+        */
+        $w[namespace] = {
+            collection: []
+        };
+
+        /*
+        * Start, when DOM ready, create a Instagramas instance for each match.
+        */
+        _r(function start() {
+            for (var i = 0; i < instagramas.length; i += 1) {
+                $w[namespace].collection.push(new Instagramas(instagramas[i]));
+            }
+        });
     }
 
-    /**
-    * @private
-    * Instagramas namespace can be predefined by setting a string in the global
-    * variable `_instagramas_namespace` with the name of your choosing, otherwise
-    * will automatically use the defautl value `_Instagramas`.
-    */
-    var namespace = $w._instagramas_namespace || '_Instagramas';
-
-    /**
-    * @public
-    * Define the namespace to store instagramas instances.
-    */
-    $w[namespace] = {
-        collection: []
-    };
-
-    /*
-    * Start, when DOM ready, create a Instagramas instance for each match.
-    */
-    $d.addEventListener("DOMContentLoaded", function start() {
-        for (var i = 0; i < instagramas.length; i += 1) {
-            $w[namespace].collection.push(new Instagramas(instagramas[i]));
-        }
-    });
-
-}(window, document));
+// }(window, document));
