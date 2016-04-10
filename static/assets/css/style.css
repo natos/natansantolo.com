@@ -169,7 +169,7 @@ h1 a { color: #333;}
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 0 0;
 }
