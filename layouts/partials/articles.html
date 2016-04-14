@@ -1,5 +1,5 @@
 <main class="articles">
-  <h3>Articles</h3>
+  <h2>Articles</h2>
   {{ $paginator := .Paginate (.Data.Pages) }}
   {{ range $paginator.Pages }}
     {{ .Render "li"}}
