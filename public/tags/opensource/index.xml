@@ -19,13 +19,13 @@
 
 &lt;p&gt;I built this simple component for &lt;a href=&#34;http://www.marcelaviola.com.ar&#34;&gt;Marcela&amp;rsquo;s Website&lt;/a&gt;, the idea is to show the latest pictures you&amp;rsquo;ve published in your Instagram.&lt;/p&gt;
 
-&lt;p&gt;To make it flexible I&amp;rsquo;ve added a few configurations like type of render, amount of images, flags to hide tags and favorites. &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;See all the possible configurations and examples&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I tried to make it flexible by adding a few configurations, you can choose the type of render, amount of images, also some flags to hide tags and favorites. &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;See all the possible configurations and examples&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&#34;gallery&#34;&gt;
     &lt;div class=&#34;instagramas&#34; data-count=&#34;4&#34; data-show-tags=&#34;true&#34; data-show-likes=&#34;true&#34; data-access-token=&#34;13931722.44ad315.a88268c74ae14151a6d27c1ef22d3613&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;There is a &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;test page&lt;/a&gt; where you can find &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;more implementations&lt;/a&gt; and some notes about styling. Also if you like to hack things go and &lt;a href=&#34;https://github.com/natos/instagramas&#34;&gt;grab the code in github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I also made a &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;test page&lt;/a&gt; where you can find &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;more example implementations&lt;/a&gt; and some notes about styling. Also if you like to hack things go and &lt;a href=&#34;https://github.com/natos/instagramas&#34;&gt;grab the code in github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ll keep improving this little project, its quite fun and there&amp;rsquo;s quite a lot of opportunities. As soon as I make some time, the first thing I want to fix is the CSS implementation and documentation.&lt;/p&gt;
 

@@ -1,0 +1,14 @@
+<article class="article">
+<!--   <header> <nav class="more">
+    <ul class="tags">
+      {{ range .Params.tags }}
+        <li><a href="/tags/{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+  </nav></header> -->
+  <h3><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h3>
+  <p><small>{{ .Description }}</small></p>
+  <figure>
+    <a href="{{ .Permalink }}"><img src="{{ .Params.image }}" alt="{{ .Params.caption }}" /></a>
+  </figure>
+</article>
