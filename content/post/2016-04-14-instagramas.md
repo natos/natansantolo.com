@@ -1,6 +1,6 @@
 +++
 title = "Instagramas"
-description = "Show the latest Instagram pictures."
+description = "A little component to show the latest Instagram pictures."
 tags = [ "components", "javascript", "instagram", "opensource"]
 date = "2016-04-14"
 categories = [
