@@ -1,9 +1,8 @@
-box: debian
+box: wercker/default
 build:
   steps:
     - arjen/hugo-build:
-        version: "0.14"
-        theme: herring-cove
+        version: "0.16"
         flags: --buildDrafts=true
 deploy:
   steps:
@@ -13,3 +12,4 @@ deploy:
         token: $GIT_TOKEN
         domain: www.natansantolo.com
         basedir: public
+        branch: master
