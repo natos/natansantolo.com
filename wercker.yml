@@ -1,4 +1,4 @@
-box: wercker/default
+box: golang:latest
 build:
   steps:
     - arjen/hugo-build:
