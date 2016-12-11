@@ -1,11 +1,11 @@
 +++
 title = "Angular Switchery"
-description = "I built a little directive with two-way binding support for Switchery."
+description = "I built a directive with two-way binding support for Switchery."
 tags = [ "components", "javascript", "angularjs", "opensource"]
 date = "2016-02-27"
 categories = [
   "JavaScript",
-  "AngularJS"
+  "Components"
 ]
 slug = "angular-switchery"
 +++

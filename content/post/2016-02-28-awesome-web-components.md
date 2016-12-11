@@ -4,7 +4,8 @@ description = "I'm excited about web components, a great tool to improve the web
 tags = [ "web", "components"]
 date = "2016-02-28"
 categories = [
-  "JavaScript"
+  "JavaScript",
+  "Components"
 ]
 slug = "awesome-web-components"
 draft = true

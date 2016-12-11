@@ -1,7 +1,7 @@
 +++
 title = "Sorting by datetime with JavaScript"
-description = "A little example on how to sort collections by datetime with JavaScript"
-tags = [ "javscript", "tips"]
+description = "An example on how to sort collections by datetime with JavaScript"
+tags = [ "javascript", "tips"]
 date = "2012-03-12"
 categories = [
   "JavaScript"
@@ -14,4 +14,3 @@ I came across this simple solution, to sort collections with JavaScript by datet
 {{< gist natos 3402761 >}}
 
 I hope you find this tip useful :)
-

@@ -1,6 +1,6 @@
 +++
 title = "Currying with JavaScript"
-description = "I found currying while exploring new patterns."
+description = "I find currying pretty cool."
 tags = [ "patterns", "javascript", "currying"]
 date = "2013-05-22"
 categories = [
