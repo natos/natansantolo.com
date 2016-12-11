@@ -31,9 +31,9 @@
 
 &lt;p&gt;Last example, here is my last Instagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery&#34;&gt;
+&lt;div class=&#34;gallery&#34;&gt;
     &lt;div class=&#34;instagramas&#34; data-count=&#34;1&#34; data-show-tags=&#34;true&#34; data-show-likes=&#34;true&#34; data-render-type=&#34;standard_resolution&#34; data-access-token=&#34;13931722.44ad315.a88268c74ae14151a6d27c1ef22d3613&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;
 
 &lt;p&gt;I hope you find this useful :)&lt;/p&gt;
 </description>
@@ -113,7 +113,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/todo-app-with-chico-ui/screenshot.png&#34; alt=&#34;Todo Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Although I&amp;rsquo;m no longer working in the Chico&amp;rsquo;s dev team, I can say that this framework is not aiming to solve architecture or structure issues on web apps, like &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;Backbone&lt;/a&gt; (great tool by the way) or &lt;a href=&#34;http://spinejs.com/&#34;&gt;Spine&lt;/a&gt;. Chico is just a collection of widgets ready to use, to build UIs really quick, without rethinking solutions.&lt;/p&gt;
+&lt;p&gt;Although I&amp;rsquo;m no longer working in the Chico&amp;rsquo;s dev team, I can say that this framework is not aiming to solve architecture or structure issues on web apps, like &lt;a href=&#34;http://backbonejs.org/&#34;&gt;Backbone&lt;/a&gt; (great tool by the way) or &lt;a href=&#34;http://spine.github.io/&#34;&gt;Spine&lt;/a&gt;. Chico is just a collection of widgets ready to use, to build UIs really quick, without rethinking solutions.&lt;/p&gt;
 
 &lt;p&gt;Some of the features I used&lt;br /&gt;
 - List Class&lt;br /&gt;
@@ -123,6 +123,20 @@
 - CSS Library&lt;/p&gt;
 
 &lt;p&gt;I hope you enjoy this demo ;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sorting by datetime with JavaScript</title>
+      <link>http://www.natansantolo.com/post/sorting-by-datetime-with-javascript/</link>
+      <pubDate>Mon, 12 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.natansantolo.com/post/sorting-by-datetime-with-javascript/</guid>
+      <description>&lt;p&gt;I came across this simple solution, to sort collections with JavaScript by datetime and I think it worth to share it. I would prefer to sort and filter collections on the server side, but some times, we need to tweak things and we can&amp;rsquo;t change APIs right away. So here a little snippet.&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/natos/3402761.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;I hope you find this tip useful :)&lt;/p&gt;
 </description>
     </item>
     

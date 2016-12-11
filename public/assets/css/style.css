@@ -132,10 +132,10 @@ h1 a { color: #333;}
 */
 .gallery {
   position: relative;
-  margin: 0;
+  margin: 3em 0;
   padding: 0;
   width: auto;
-  height: auto;
+  height: 500px;
   transition: all 2s ease-in-out;
 }
 .gallery a {
@@ -333,4 +333,13 @@ h1 a { color: #333;}
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+
+/**
+ * Taxnomies
+ */
+
+.taxonomy.tag::after {
+  content: ", ";
 }
