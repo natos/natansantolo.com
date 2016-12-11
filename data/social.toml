@@ -14,7 +14,7 @@
 [links.linkedin]
   name = "LinkedIn"
   identifier = "linkedin"
-  url = "https://nl.linkedin.com/in/natansantolo"
+  url = "https://www.linkedin.com/in/natansantolo"
   icon = "fa fa-linkedin-square"
   weight = 3
 [links.behance]
