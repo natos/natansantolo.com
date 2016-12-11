@@ -1,9 +1,9 @@
 {{ partial "head.html" . }}
 
-<main>
+<main class="wrap">
   <article class="article">
     <header>
-      <h2><a href="{{ .Params.href }}" title="{{ .Title }}" target="_blank">{{ .Title }}</a></h2>
+      <h1><a href="{{ .Params.href }}" title="{{ .Title }}" target="_blank">{{ .Title }}</a></h1>
     {{ .Description }}
     </header>
     <figure>
@@ -16,7 +16,7 @@
           <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
         {{ end }}
       </ul> -->
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+      <time datetime="{{ .Date.Format "Jan 02, 2006" }}">{{ .Date.Format "2006.01.02" }}</time>
     </nav>
   </article>
   <nav class="pagination">

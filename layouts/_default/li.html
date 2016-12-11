@@ -1,13 +1,7 @@
 <article class="article">
-<!--   <header> <nav class="more">
-    <ul class="tags">
-      {{ range .Params.tags }}
-        <li><a href="/tags/{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-  </nav></header> -->
+  <time datetime="{{ .Date.Format "Jan 02, 2006" }}">{{ .Date.Format "2006.01.02" }}</time>
   <h3><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h3>
-  <p><small>{{ .Description }}</small></p>
+  <p>{{ .Description }}</p>
   <figure>
     <a href="{{ .Permalink }}"><img src="{{ .Params.image }}" alt="{{ .Params.caption }}" /></a>
   </figure>

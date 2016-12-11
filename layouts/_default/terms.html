@@ -1,6 +1,6 @@
 {{ partial "head.html" . }}
 
-<main class="articles-by-tags">
+<main class="wrap articles-by-tags">
   {{ $data := .Data }}
   {{ range $key, $value := $data.Terms.ByCount }}
     <h1><a href="/{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a></h1>
