@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patterns on Natan Santolo</title>
-    <link>http://www.natansantolo.com/tags/patterns/</link>
+    <link>http://www.natansantolo.com/tags/patterns/index.xml</link>
     <description>Recent content in Patterns on Natan Santolo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Thu, 23 May 2013 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.natansantolo.com/tags/patterns/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

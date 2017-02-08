@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Natan Santolo</title>
-    <link>http://www.natansantolo.com/tags/javascript/</link>
+    <link>http://www.natansantolo.com/tags/javascript/index.xml</link>
     <description>Recent content in Javascript on Natan Santolo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <lastBuildDate>Thu, 14 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.natansantolo.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
