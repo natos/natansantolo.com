@@ -16,7 +16,8 @@ watch = true
   name = "Natan Santolo"
 
 [params]
-  description = "Web Craftsman"
+  Description = "Web Craftsman"
+  InstagramToken = "13931722.44ad315.7c90cd2cf50c4f9887e3c66f112b4eb5"
 
 [taxonomies]
   category = "categories"
