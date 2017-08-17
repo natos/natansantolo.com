@@ -7,6 +7,7 @@ categories = [
   "JavaScript"
 ]
 slug = "meaningful-javaScript-interfaces"
+draft = true
 +++
 
 ![Iron Man's first helmet](/assets/images/meaningful-javascript-interfaces/stark.jpg)
@@ -15,7 +16,7 @@ Object literals in javascript are awesome, we can use them to improve the way we
 
 {{< gist natos 5632861 >}}
 
-Every project has different needs, and that's why we need to put some effort in design our solutions. This patterns can be really useful when you work with lot's of people. Agreeing upon an interface is the first contract you have to sign. Later, some can be focus on developing the tools, and others in making the product. At least in my experience, creating meaningful interfaces, empowers your team. 
+Every project has different needs, and that's why we need to put some effort in design our solutions. This patterns can be really useful when you work with lot's of people. Agreeing upon an interface is the first contract you have to sign. Later, some can be focus on developing the tools, and others in making the product. At least in my experience, creating meaningful interfaces, empowers your team.
 
 A meaningful interface is like Iron Man's suit. Who wouldn't like to be like Tony Stark?
 

@@ -7,6 +7,7 @@ categories = [
   "JavaScript"
 ]
 slug = "sorting-by-datetime-with-javascript"
+draft = true
 +++
 
 I came across this simple solution, to sort collections with JavaScript by datetime and I think it worth to share it. I would prefer to sort and filter collections on the server side, but some times, we need to tweak things and we can't change APIs right away. So here a little snippet.

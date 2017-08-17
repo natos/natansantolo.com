@@ -7,6 +7,7 @@ categories = [
   "JavaScript"
 ]
 slug = "curriyng-with-javascript"
+draft = true
 +++
 
 "In mathematics and computer science, **currying** is the technique of transforming a function that takes multiple arguments." [Wikipedia](http://en.wikipedia.org/wiki/Currying).
