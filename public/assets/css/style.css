@@ -64,12 +64,25 @@ h1 a { color: #333;}
   width: 90%;
   max-width: 860px;
   margin: 0 auto;
-  padding: 2.5em 2% 5em 2%;
+  padding-top: 2rem;
+}
+
+/* @media screen and (max-width: 640px) {
+  .wrap {
+    padding: 2.5em 7% 5em 7%;
+  }
+} */
+
+.natan-photo {
+  width: 25%;
+  padding: 1rem;
+  float: right;
 }
 
 @media screen and (max-width: 640px) {
-  .wrap {
-    padding: 2.5em 7% 5em 7%;
+  .natan-photo {
+    width: 50%;
+    float: none;
   }
 }
 
@@ -151,24 +164,38 @@ h1 a { color: #333;}
   line-height: 3em;
   vertical-align: top;
 }
-.instagramas figure, {
-  margin: 1rem;
-  padding: 1rem;
-}
 .instagramas {
+  overflow-x: scroll;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  padding: 0;
+  margin: 0;
   /*padding: 1rem 0 0;*/
 }
-.instagrama {
+.instagramas .instagrama {
   position: relative;
   display: block;
   color: #4C1E36;
   margin: 0;
   overflow: hidden;
+}
+.instagramas .instagrama-image,
+.instagramas .instagrama-video {
+  margin: 1%;
+  padding: 1%;
+}
+@media screen and (min-width: 640px) {
+  .instagramas {
+    justify-content: center;
+  }
+  .instagramas .instagrama-image,
+  .instagramas .instagrama-video {
+    margin: .75%;
+    padding: .75%;
+  } 
 }
 .instagramas .placeholder {
   opacity: 0;
@@ -181,8 +208,8 @@ h1 a { color: #333;}
   transform: scale3d(1, 1, 1);
 }
 .instagrama-thumbnail {
-  width: 150px;
-  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
 }
 .instagrama-low_resolution {
   width: 320px;
@@ -218,8 +245,6 @@ h1 a { color: #333;}
   opacity: .5;
   transform: scale3d(1.05, 1.05, 1.05) translate3d(-50%, -50%, 0);
 }
-
-.instagrama-thumbnail img {}
 .instagrama
 .instagrama img {
   display: block;

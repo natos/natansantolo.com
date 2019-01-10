@@ -48,7 +48,7 @@ p, .p {
 small, .small { font-size: 16px; }
 
 iframe { margin-bottom: 32px; }
-footer { text-align: center; }
+footer { text-align: center; padding-bottom: 2rem; }
 
 @media screen and (min-width: 640px) {
   h1, .h1 { font-size: 48px; }
@@ -109,7 +109,10 @@ h1 a { color: #333;}
 
 .small time { color: #999; }
 .about { margin-bottom: 5em; }
-.about p { font-family: 'Merriweather', serif; }
+.about p { font-family: 'Merriweather', serif; padding-left: 1rem; border-left: 1rem solid #eee; }
+.about p a { color: #333; }
+.about p:hover a { color: #09c; }
+.about p:hover { padding-left: 1rem; border-left: 1rem solid #09c; }
 .social-nav {
     display: flex;
 }
@@ -193,8 +196,8 @@ h1 a { color: #333;}
   }
   .instagramas .instagrama-image,
   .instagramas .instagrama-video {
-    margin: .75%;
-    padding: .75%;
+    margin: .70%;
+    padding: .70%;
   } 
 }
 .instagramas .placeholder {

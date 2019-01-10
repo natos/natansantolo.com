@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ .Site.Title }}</title>
+    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display|Merriweather|Merriweather+Sans">
+    <link rel="icon" href="/favicon.png" />
+    {{ .Hugo.Generator }}
+</head>
+
+<body>
+  {{ block "header" . }}
+  <header class="wrap mb">
+    <img class="natan-photo" src="/assets/NatanSantoloPhoto.png" />
+    <h1 class="h2 m-0"><a href="/">{{ .Site.Title }}</a></h1>
+    <p>{{ .Site.Params.Description }}</p>
+    {{ partial "social.html" . }}
+  </header>
+  {{ end }}
+  {{ block "main" . }}
+  <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+  {{ block "footer" . }}
+    <footer>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0"
+          src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license"
+        href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </footer>
+  {{ end }}
+  {{ partial "analytics.html" . }}
+</body>
+
+</html>
