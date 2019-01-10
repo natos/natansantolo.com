@@ -5,9 +5,8 @@ build:
         version: "0.53"
 deploy:
   steps:
-    - install-packages:
-        packages: git ssh-client
-    - lukevivier/gh-pages:
-        token: $GIT_TOKEN
-        domain: www.natansantolo.com
-        basedir: public
+    - uetchy/gh-pages:
+      token: $GIT_TOKEN
+      repo: natansantolo.com/natos.github.com
+      domain: www.natansantolo.com
+      path: public
