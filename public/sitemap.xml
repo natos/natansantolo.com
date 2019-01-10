@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://www.natansantolo.com/post/instagramas/</loc>
@@ -12,23 +13,8 @@
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/post/meaningful-javaScript-interfaces/</loc>
-    <lastmod>2013-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.natansantolo.com/post/curriyng-with-javascript/</loc>
-    <lastmod>2013-05-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.natansantolo.com/post/todo-app-with-chico-ui/</loc>
     <lastmod>2012-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.natansantolo.com/post/sorting-by-datetime-with-javascript/</loc>
-    <lastmod>2012-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -49,20 +35,14 @@
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/categories/components/</loc>
-    <lastmod>2016-04-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.natansantolo.com/tags/components/</loc>
     <lastmod>2016-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/tags/currying/</loc>
-    <lastmod>2013-05-22T00:00:00+00:00</lastmod>
+    <loc>http://www.natansantolo.com/categories/components/</loc>
+    <lastmod>2016-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,13 +59,13 @@
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/categories/javascript/</loc>
+    <loc>http://www.natansantolo.com/tags/javascript/</loc>
     <lastmod>2016-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/tags/javascript/</loc>
+    <loc>http://www.natansantolo.com/categories/javascript/</loc>
     <lastmod>2016-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -103,12 +83,6 @@
   </url>
   
   <url>
-    <loc>http://www.natansantolo.com/tags/patterns/</loc>
-    <lastmod>2013-05-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.natansantolo.com/post/</loc>
     <lastmod>2016-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -116,12 +90,7 @@
   
   <url>
     <loc>http://www.natansantolo.com/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.natansantolo.com/tags/tips/</loc>
-    <lastmod>2012-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2016-02-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

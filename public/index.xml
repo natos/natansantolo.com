@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Natan Santolo</title>
-    <link>http://www.natansantolo.com/index.xml</link>
+    <link>http://www.natansantolo.com/</link>
     <description>Recent content on Natan Santolo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
     <lastBuildDate>Thu, 14 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.natansantolo.com/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.natansantolo.com/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Instagramas</title>
@@ -15,28 +17,9 @@
       <pubDate>Thu, 14 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>http://www.natansantolo.com/post/instagramas/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/instagramas/instagramas.png&#34; alt=&#34;Instagramas&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I built this simple component for &lt;a href=&#34;http://www.marcelaviola.com.ar&#34;&gt;Marcela&amp;rsquo;s Website&lt;/a&gt;, the idea is to show the latest pictures you&amp;rsquo;ve published in your Instagram.&lt;/p&gt;
-
-&lt;p&gt;I tried to make it flexible by adding a few configurations, you can choose the type of render, amount of images, also some flags to hide tags and favorites. &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;See all the possible configurations and examples&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&#34;gallery&#34;&gt;
-    &lt;div class=&#34;instagramas&#34; data-count=&#34;4&#34; data-show-tags=&#34;true&#34; data-show-likes=&#34;true&#34; data-access-token=&#34;13931722.44ad315.a88268c74ae14151a6d27c1ef22d3613&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I also made a &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;test page&lt;/a&gt; where you can find &lt;a href=&#34;http://natos.github.io/instagramas/&#34;&gt;more example implementations&lt;/a&gt; and some notes about styling. Also if you like to hack things go and &lt;a href=&#34;https://github.com/natos/instagramas&#34;&gt;grab the code in github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll keep improving this little project, its quite fun and there&amp;rsquo;s quite a lot of opportunities. As soon as I make some time, the first thing I want to fix is the CSS implementation and documentation.&lt;/p&gt;
-
-&lt;p&gt;Last example, here is my last Instagram:&lt;/p&gt;
-
-&lt;div class=&#34;gallery&#34;&gt;
-    &lt;div class=&#34;instagramas&#34; data-count=&#34;1&#34; data-show-tags=&#34;true&#34; data-show-likes=&#34;true&#34; data-render-type=&#34;standard_resolution&#34; data-access-token=&#34;13931722.44ad315.a88268c74ae14151a6d27c1ef22d3613&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I hope you find this useful :)&lt;/p&gt;
-</description>
+      <description>I built this simple component for Marcela&amp;rsquo;s Website, the idea is to show the latest pictures you&amp;rsquo;ve published in your Instagram.
+I tried to make it flexible by adding a few configurations, you can choose the type of render, amount of images, also some flags to hide tags and favorites. See all the possible configurations and examples.
+   I also made a test page where you can find more example implementations and some notes about styling.</description>
     </item>
     
     <item>
@@ -45,62 +28,8 @@
       <pubDate>Sat, 27 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>http://www.natansantolo.com/post/angular-switchery/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/angular-switchery/switchery.png&#34; alt=&#34;Switchery&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/abpetkov&#34;&gt;Alexander&lt;/a&gt; built this beautiful checkbox component called &lt;a href=&#34;http://abpetkov.github.io/switchery/&#34;&gt;Switchery&lt;/a&gt;. From their website: &amp;laquo;Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.&amp;raquo;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/angular-switchery/spaaza.png&#34; alt=&#34;Spaaza Screenshot&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve used it along different projects, I&amp;rsquo;m really happy with it. But when I tried to included in a project using AngularJS, I found a few challenges. Although there are a few directives around (like &lt;a href=&#34;https://github.com/servergrove/NgSwitchery&#34;&gt;NgSwitchery&lt;/a&gt;), I couldn&amp;rsquo;t find one with support for two-way binding, I needed to keep my models updated. So I went for it and built a new directive.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/angular-switchery/console.png&#34; alt=&#34;Spaaza Screenshot&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s &lt;a href=&#34;http://natos.github.io/angular-switchery/&#34;&gt;Angular Switchery&lt;/a&gt;, &lt;a href=&#34;https://docs.angularjs.org/guide/directive&#34;&gt;a directive&lt;/a&gt; that transform a simple checkbox into a switch, and supports two way bindings to scope variables, to keep view and data in sync. You&amp;rsquo;ll find the code and install instructions in &lt;a href=&#34;https://github.com/natos/angular-switchery&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Run this JSFiddle to see it working or &lt;a href=&#34;http://natos.github.io/angular-switchery/&#34;&gt;check the demo&lt;/a&gt;&lt;/p&gt;
-
-&lt;iframe width=&#34;100%&#34; height=&#34;300&#34; src=&#34;http://jsfiddle.net/natos/s2bkr5g9/embedded/&#34; allowfullscreen=&#34;allowfullscreen&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;I hope you find this useful :)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Meaningful Interfaces</title>
-      <link>http://www.natansantolo.com/post/meaningful-javaScript-interfaces/</link>
-      <pubDate>Thu, 23 May 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.natansantolo.com/post/meaningful-javaScript-interfaces/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/meaningful-javascript-interfaces/stark.jpg&#34; alt=&#34;Iron Man&#39;s first helmet&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Object literals in javascript are awesome, we can use them to improve the way we are communicating our components interfaces, make them sort of self-explanatory. There is plenty of good docs about &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects&#34;&gt;working with objects around the web&lt;/a&gt;. Here an &lt;em&gt;illustrative&lt;/em&gt; example how to create a easy to understand interface to query an API:&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/natos/5632861.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;Every project has different needs, and that&amp;rsquo;s why we need to put some effort in design our solutions. This patterns can be really useful when you work with lot&amp;rsquo;s of people. Agreeing upon an interface is the first contract you have to sign. Later, some can be focus on developing the tools, and others in making the product. At least in my experience, creating meaningful interfaces, empowers your team.&lt;/p&gt;
-
-&lt;p&gt;A meaningful interface is like Iron Man&amp;rsquo;s suit. Who wouldn&amp;rsquo;t like to be like Tony Stark?&lt;/p&gt;
-
-&lt;p&gt;I hope you find this useful :)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Currying with JavaScript</title>
-      <link>http://www.natansantolo.com/post/curriyng-with-javascript/</link>
-      <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.natansantolo.com/post/curriyng-with-javascript/</guid>
-      <description>&lt;p&gt;&amp;laquo;In mathematics and computer science, &lt;strong&gt;currying&lt;/strong&gt; is the technique of transforming a function that takes multiple arguments.&amp;raquo; &lt;a href=&#34;http://en.wikipedia.org/wiki/Currying&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I spend good part of the day writing JavaScript and It&amp;rsquo;s all about creating usable interfaces to share code with other people, exposing an understandable API, so they can learn it and build faster. Currying could help in some cases to improve how we implement certain solutions, and it&amp;rsquo;s algo quite pattern fun to use.&lt;/p&gt;
-
-&lt;p&gt;I wanted to share a simple example of how to apply curry pattern in JavaScript, it may be handy some times to improve component&amp;rsquo;s interfaces or just for lazy processing stuff, so here a &lt;a href=&#34;https://gist.github.com/natos/5626328#file-currying_example-js&#34;&gt;simple function to add numbers&lt;/a&gt; and accumulate the result:&lt;/p&gt;
-
-&lt;iframe width=&#34;100%&#34; height=&#34;300&#34; src=&#34;http://jsfiddle.net/natos/PfyYw/embedded/&#34; allowfullscreen=&#34;allowfullscreen&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;I hope you find this useful :)&lt;/p&gt;
-</description>
+      <description>Alexander built this beautiful checkbox component called Switchery. From their website: &amp;laquo;Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.&amp;raquo;
+I&amp;rsquo;ve used it along different projects, I&amp;rsquo;m really happy with it. But when I tried to included in a project using AngularJS, I found a few challenges.</description>
     </item>
     
     <item>
@@ -109,35 +38,9 @@
       <pubDate>Wed, 28 Mar 2012 00:00:00 +0000</pubDate>
       
       <guid>http://www.natansantolo.com/post/todo-app-with-chico-ui/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve been following the buzz around &lt;a href=&#34;http://www.chico-ui.com.ar&#34;&gt;Chico UI&lt;/a&gt; lately, and I&amp;rsquo;ve found a lot of interesting thoughts, like this guy (don&amp;rsquo;t remember the name) saying that the only thing that is missing, is a Todo App demo builded with Chico. I actually, don&amp;rsquo;t think we need one, but any way, &lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;I builded one&lt;/a&gt; and I published it &lt;a href=&#34;https://github.com/natos/chicoui-todo&#34;&gt;there in Github&lt;/a&gt;.&lt;/p&gt;
+      <description>I&amp;rsquo;ve been following the buzz around Chico UI lately, and I&amp;rsquo;ve found a lot of interesting thoughts, like this guy (don&amp;rsquo;t remember the name) saying that the only thing that is missing, is a Todo App demo builded with Chico. I actually, don&amp;rsquo;t think we need one, but any way, I builded one and I published it there in Github.
 
-&lt;p&gt;&lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/todo-app-with-chico-ui/screenshot.png&#34; alt=&#34;Todo Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Although I&amp;rsquo;m no longer working in the Chico&amp;rsquo;s dev team, I can say that this framework is not aiming to solve architecture or structure issues on web apps, like &lt;a href=&#34;http://backbonejs.org/&#34;&gt;Backbone&lt;/a&gt; (great tool by the way) or &lt;a href=&#34;http://spine.github.io/&#34;&gt;Spine&lt;/a&gt;. Chico is just a collection of widgets ready to use, to build UIs really quick, without rethinking solutions.&lt;/p&gt;
-
-&lt;p&gt;Some of the features I used&lt;br /&gt;
-- List Class&lt;br /&gt;
-- Blink Widget&lt;br /&gt;
-- Countdown Widget&lt;br /&gt;
-- Keyboard Events&lt;br /&gt;
-- CSS Library&lt;/p&gt;
-
-&lt;p&gt;I hope you enjoy this demo ;)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Sorting by datetime with JavaScript</title>
-      <link>http://www.natansantolo.com/post/sorting-by-datetime-with-javascript/</link>
-      <pubDate>Mon, 12 Mar 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.natansantolo.com/post/sorting-by-datetime-with-javascript/</guid>
-      <description>&lt;p&gt;I came across this simple solution, to sort collections with JavaScript by datetime and I think it worth to share it. I would prefer to sort and filter collections on the server side, but some times, we need to tweak things and we can&amp;rsquo;t change APIs right away. So here a little snippet.&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/natos/3402761.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;I hope you find this tip useful :)&lt;/p&gt;
-</description>
+Although I&amp;rsquo;m no longer working in the Chico&amp;rsquo;s dev team, I can say that this framework is not aiming to solve architecture or structure issues on web apps, like Backbone (great tool by the way) or Spine.</description>
     </item>
     
   </channel>

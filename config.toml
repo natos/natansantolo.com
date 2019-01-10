@@ -1,4 +1,4 @@
-title = "Natan Santolo"
+title = "Hi! I'm Natan Santolo"
 languagecode = "en_US"
 
 contentdir = "content"
@@ -16,8 +16,8 @@ watch = true
   name = "Natan Santolo"
 
 [params]
-  Description = "Web Craftsman"
-  InstagramToken = "13931722.44ad315.7c90cd2cf50c4f9887e3c66f112b4eb5"
+  Description = "Design and Innovation"
+  InstagramToken = "13931722.44ad315.9e06216e9b454e19b048e5e335051691"
 
 [taxonomies]
   category = "categories"
