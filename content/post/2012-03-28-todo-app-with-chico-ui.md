@@ -1,15 +1,13 @@
 +++
-title = "Todo App with Chico UI"
-description = "I built a Todo App with Chico UI, here is the result."
-tags = [ "chico-ui", "javascript", "demo"]
+categories = ["JavaScript"]
 date = "2012-03-28"
-categories = [
-  "JavaScript"
-]
-slug = "todo-app-with-chico-ui"
+description = "I built a Todo App with Chico UI, here is the result."
 notes = "edit: 11/12/2016 Backbone and Spine links were broken;"
-+++
+slug = "todo-app-with-chico-ui"
+tags = ["chico-ui", "javascript", "demo"]
+title = "Todo App with Chico UI"
 
++++
 I've been following the buzz around [Chico UI](http://www.chico-ui.com.ar) lately, and I've found a lot of interesting thoughts, like this guy (don't remember the name) saying that the only thing that is missing, is a Todo App demo builded with Chico. I actually, don't think we need one, but any way, [I builded one](http://natos.github.com/chicoui-todo) and I published it [there in Github](https://github.com/natos/chicoui-todo).
 
 [![Todo Screenshot](/assets/images/todo-app-with-chico-ui/screenshot.png)](http://natos.github.com/chicoui-todo)
