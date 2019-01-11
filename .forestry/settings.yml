@@ -9,6 +9,11 @@ sections:
   label: Post
   create: all
   match: "**/*"
+- type: directory
+  path: data
+  label: Data
+  create: none
+  match: "**/*.{json,yaml,yml,toml}"
 upload_dir: ''
 public_path: ''
 front_matter_path: ''
