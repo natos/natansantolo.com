@@ -1,0 +1,30 @@
+---
+label: post
+hide_body: false
+is_partial: false
+fields:
+- name: title
+  default: title
+  label: Title
+  hidden: false
+  type: text
+- name: date
+  default: ''
+  label: Date
+  hidden: false
+  type: datetime
+- name: draft
+  default: true
+  label: Draft
+  hidden: false
+  type: boolean
+pages:
+- content/post/2016-02-27-angular-switchery.md
+- content/post/2016-04-14-instagramas.md
+- content/post/2013-05-22-currying-with-javascript.md
+- content/post/2013-05-23-meaningful-javascript-interfaces.md
+- content/post/2012-03-28-todo-app-with-chico-ui.md
+- content/post/2016-02-28-awesome-web-components.md
+- content/post/2016-06-23-hugo-my-new-best-friend.md
+- content/post/2016-02-29-scrolling-performance.md
+- content/post/2012-03-12-sort-by-datetime.md
