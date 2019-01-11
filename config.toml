@@ -1,69 +1,60 @@
-title = "I'm Natan Santolo"
-languagecode = "en_US"
-
+baseurl = "http://www.natansantolo.com/"
+builddrafts = false
+canonifyurls = true
 contentdir = "content"
+languagecode = "en_US"
 layoutdir = "layouts"
 publishdir = "public"
-builddrafts = false
-
-baseurl = "http://www.natansantolo.com/"
-
 relativeurls = false
-canonifyurls = true
+title = "I'm Natan Santolo"
 watch = true
-
 [author]
-  name = "Natan Santolo"
-
-[params]
-  Description = "Design and Innovation"
-  InstagramToken = "13931722.44ad315.9e06216e9b454e19b048e5e335051691"
-
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-
+name = "Natan Santolo"
 [blackfriday]
-  angledQuotes = true
-  fractions = false
-  plainIDAnchors = true
-  extensions = ["hardLineBreak"]
-
 SectionPagesMenu = "social"
-
+angledQuotes = true
+extensions = ["hardLineBreak"]
+fractions = false
+plainIDAnchors = true
 [[menu.social]]
-  name = "Twitter"
-  identifier = "twitter"
-  url = "https://twitter.com/natos"
-  pre = "<i class='fa fa-twitter-square'></i>"
-  weight = 1
+identifier = "instagram"
+name = "Instagram"
+pre = "<i class='fa fa-instagram'></i>"
+url = "https://www.instagram.com/natansantolo/"
+weight = 6
 [[menu.social]]
-  name = "Github"
-  identifier = "github"
-  url = "https://github.com/natos"
-  pre = "<i class='fa fa-github-square'></i>"
-  weight = 2
+identifier = "tumblr"
+name = "Tumblr"
+pre = "<i class='fa fa-tumblr-square'></i>"
+url = "http://natos.tumblr.com"
+weight = 5
 [[menu.social]]
-  name = "LinkedIn"
-  identifier = "linkedin"
-  url = "https://nl.linkedin.com/in/natansantolo"
-  pre = "<i class='fa fa-linkedin-square'></i>"
-  weight = 3
+identifier = "behance"
+name = "Behance"
+pre = "<i class='fa fa-behance-square'></i>"
+url = "https://www.behance.net/natansan"
+weight = 4
 [[menu.social]]
-  name = "Behance"
-  identifier = "behance"
-  url = "https://www.behance.net/natansantolo"
-  pre = "<i class='fa fa-behance-square'></i>"
-  weight = 4
+identifier = "linkedin"
+name = "LinkedIn"
+pre = "<i class='fa fa-linkedin-square'></i>"
+url = "https://nl.linkedin.com/in/natansantolo"
+weight = 3
 [[menu.social]]
-  name = "Tumblr"
-  identifier = "tumblr"
-  url = "http://natos.tumblr.com"
-  pre = "<i class='fa fa-tumblr-square'></i>"
-  weight = 5
+identifier = "github"
+name = "Github"
+pre = "<i class='fa fa-github-square'></i>"
+url = "https://github.com/natos"
+weight = 2
 [[menu.social]]
-  name = "Instagram"
-  identifier = "instagram"
-  url = "https://www.instagram.com/natansantolo/"
-  pre = "<i class='fa fa-instagram'></i>"
-  weight = 6
+identifier = "twitter"
+name = "Twitter"
+pre = "<i class='fa fa-twitter-square'></i>"
+url = "https://twitter.com/natos"
+weight = 1
+[params]
+Description = "Design and Innovation"
+InstagramToken = "13931722.44ad315.9e06216e9b454e19b048e5e335051691"
+[taxonomies]
+category = "categories"
+tag = "tags"
