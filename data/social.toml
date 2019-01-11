@@ -20,7 +20,7 @@
 [links.behance]
   name = "Behance"
   identifier = "behance"
-  url = "https://www.behance.net/natansantolo"
+  url = "https://www.behance.net/natansan"
   icon = "fa fa-behance-square"
   weight = 4
 [links.tumblr]
