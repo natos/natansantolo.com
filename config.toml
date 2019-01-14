@@ -1,4 +1,4 @@
-baseurl = "http://www.natansantolo.com/"
+baseurl = "https://www.natansantolo.com/"
 builddrafts = false
 canonifyurls = true
 contentdir = "content"
