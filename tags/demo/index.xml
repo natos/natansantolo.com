@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>I&#39;m Natan Santolo</title>
-    <link>http://www.natansantolo.com/tags/demo/index.xml</link>
+    <link>https://www.natansantolo.com/tags/demo/index.xml</link>
     <description>Recent content on I&#39;m Natan Santolo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en_US</language>
-    <atom:link href="http://www.natansantolo.com/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.natansantolo.com/tags/demo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Todo App with Chico UI</title>
-      <link>http://www.natansantolo.com/post/todo-app-with-chico-ui/</link>
+      <link>https://www.natansantolo.com/post/todo-app-with-chico-ui/</link>
       <pubDate>Wed, 28 Mar 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.natansantolo.com/post/todo-app-with-chico-ui/</guid>
+      <guid>https://www.natansantolo.com/post/todo-app-with-chico-ui/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been following the buzz around &lt;a href=&#34;http://www.chico-ui.com.ar&#34;&gt;Chico UI&lt;/a&gt; lately, and I&amp;rsquo;ve found a lot of interesting thoughts, like this guy (don&amp;rsquo;t remember the name) saying that the only thing that is missing, is a Todo App demo builded with Chico. I actually, don&amp;rsquo;t think we need one, but any way, &lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;I builded one&lt;/a&gt; and I published it &lt;a href=&#34;https://github.com/natos/chicoui-todo&#34;&gt;there in Github&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;&lt;img src=&#34;http://www.natansantolo.com/assets/images/todo-app-with-chico-ui/screenshot.png&#34; alt=&#34;Todo Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://natos.github.com/chicoui-todo&#34;&gt;&lt;img src=&#34;https://www.natansantolo.com/assets/images/todo-app-with-chico-ui/screenshot.png&#34; alt=&#34;Todo Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Although I&amp;rsquo;m no longer working in the Chico&amp;rsquo;s dev team, I can say that this framework is not aiming to solve architecture or structure issues on web apps, like &lt;a href=&#34;http://backbonejs.org/&#34;&gt;Backbone&lt;/a&gt; (great tool by the way) or &lt;a href=&#34;http://spine.github.io/&#34;&gt;Spine&lt;/a&gt;. Chico is just a collection of widgets ready to use, to build UIs really quick, without rethinking solutions.&lt;/p&gt;
 
