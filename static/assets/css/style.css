@@ -56,7 +56,7 @@ footer { text-align: center; padding-bottom: 2rem; }
   p, .p   { font-size: 20px; }
 }
 
-a { color: #09c; text-decoration: none; }
+a { color: #09c; text-decoration: none; transition: all 0.5s ease; }
 a:hover { color: #069; }
 h1 a { color: #333;}
 
@@ -109,7 +109,7 @@ h1 a { color: #333;}
 
 .small time { color: #999; }
 .about { margin-bottom: 5em; }
-.about p { font-family: 'Merriweather', serif; }
+.about p { font-family: 'Merriweather', serif; transition: all 0.5s ease; }
 
 @media screen and (min-width: 640px) {
   .about p { padding-left: 1rem; border-left: 1rem solid #eee; }
