@@ -15,9 +15,16 @@ article, aside, details, figcaption, figure, footer, header, main, nav, section,
   display: block;
 }
 
-
+ /* #FFC000
+ #F2C94C */
+canvas {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -1;
+}
 body {
   color: #333;
+  background-color: #FFC000; 
   font-size: 100%;
   line-height: 1.75;
   font-family: 'Playfair Display', serif;
@@ -48,7 +55,7 @@ p, .p {
 small, .small { font-size: 16px; }
 
 iframe { margin-bottom: 32px; }
-footer { text-align: center; padding-bottom: 2rem; }
+footer { text-align: left; padding-bottom: 2rem; }
 
 @media screen and (min-width: 640px) {
   h1, .h1 { font-size: 48px; }
@@ -56,9 +63,9 @@ footer { text-align: center; padding-bottom: 2rem; }
   p, .p   { font-size: 20px; }
 }
 
-a { color: #09c; text-decoration: none; transition: all 0.5s ease; }
-a:hover { color: #069; }
-h1 a { color: #333;}
+a { text-decoration: none; transition: all 0.5s ease; }
+/* a:visited { color: #333; } */
+a:hover { text-decoration: underline; }
 
 .wrap {
   width: 90%;
@@ -75,9 +82,17 @@ h1 a { color: #333;}
 
 .natan-photo {
   width: 25%;
-  padding: 1rem;
   float: right;
+  border: .25rem solid #ffffff;
+  padding: .25rem;
+  border-radius: 100%;
+  transition: all ease-in .2s;
 }
+
+/* .natan-photo:hover {
+  border: 0 solid #ffffff;
+  padding: 0;
+} */
 
 @media screen and (max-width: 640px) {
   .natan-photo {
@@ -94,6 +109,12 @@ h1 a { color: #333;}
 .mb p {
 
 }
+.mb a {
+  color: #333;
+}
+.mb a:hover {
+  text-decoration: none;
+}
 .mb p::before {
   content: "(";
 }
@@ -108,29 +129,28 @@ h1 a { color: #333;}
 .fr { float: right; }
 
 .small time { color: #999; }
-.about { margin-bottom: 5em; }
-.about p { font-family: 'Merriweather', serif; transition: all 0.5s ease; }
+.about { margin-bottom: 5rem; }
+.about p { margin: 0; padding: 1rem 0; font-family: 'Merriweather', serif; transition: all 0.5s ease; }
 
 @media screen and (min-width: 640px) {
-  .about p { padding-left: 1rem; border-left: 1rem solid #eee; }
-  .about p a { color: #333; }
-  .about p:hover a { color: #09c; }
-  .about p:hover { padding-left: 1rem; border-left: 1rem solid #09c; }
+  /* .about p a { color: #333; }
+  .about p:hover a { color: #09c; } */
 }
 .social-nav {
     display: flex;
 }
 @media screen and (min-width: 640px) {
   .social-nav {
-    position: fixed;
+    /* position: fixed; */
     display: block;
-    left: 1em;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
+    /* left: 1em; */
+    /* top: 50%; */
+    /* transform: translate3d(0, -50%, 0); */
   }
   .social-nav-item { display: block; }
 }
 .social-nav-item {
+  display: inline;
   margin-right: 1em;
   transition: all .2s ease-out;
   color: #333;

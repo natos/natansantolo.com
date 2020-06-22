@@ -17,18 +17,6 @@
   url = "https://www.linkedin.com/in/natansantolo"
   icon = "fa fa-linkedin-square"
   weight = 3
-[links.behance]
-  name = "Behance"
-  identifier = "behance"
-  url = "https://www.behance.net/natansan"
-  icon = "fa fa-behance-square"
-  weight = 4
-[links.tumblr]
-  name = "Tumblr"
-  identifier = "tumblr"
-  url = "http://natos.tumblr.com"
-  icon = "fa fa-tumblr-square"
-  weight = 5
 [links.instagram]
   name = "Instagram"
   identifier = "instagram"

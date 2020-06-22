@@ -6,7 +6,7 @@ languagecode = "en_US"
 layoutdir = "layouts"
 publishdir = "public"
 relativeurls = false
-title = "Hi, I'm Natan."
+title = "Natan Santolo"
 watch = true
 [author]
 name = "Natan Santolo"
