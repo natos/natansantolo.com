@@ -28,6 +28,9 @@ body {
   font-size: 100%;
   line-height: 1.75;
   font-family: 'Playfair Display', serif;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 body * {
