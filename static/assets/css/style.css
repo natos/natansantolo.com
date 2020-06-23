@@ -27,43 +27,43 @@ body {
   background-color: #FFC000; 
   font-size: 100%;
   line-height: 1.75;
-  font-family: 'Playfair Display', serif;
+  font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
   height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+}
+
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body * {
   box-sizing: border-box;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Merriweather', serif;
   line-height: 1.25;
 }
-h1, .h1 {
-  font-size: 32px;
-  margin-bottom: 32px;
+h1 {
+  font-size: 55px;
+  margin-bottom: 55px;
 }
-h2, .h2, h3, .h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   font-size: 24px;
   margin-bottom: 24px;
 }
-h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-}
-p, .p {
+p {
   font-size: 18px;
   margin-bottom: 32px;
 }
-small, .small { font-size: 16px; }
+small { font-size: 16px; }
 
 iframe { margin-bottom: 32px; }
 footer { text-align: left; padding-bottom: 2rem; }
 
 @media screen and (min-width: 640px) {
-  h1, .h1 { font-size: 48px; }
-  h2, .h2 { font-size: 32px; }
-  p, .p   { font-size: 20px; }
+  h1 { font-size: 48px; }
+  h2 { font-size: 32px; }
+  p { font-size: 20px; }
 }
 
 a { text-decoration: none; transition: all 0.5s ease; }
@@ -74,7 +74,7 @@ a:hover { text-decoration: underline; }
   width: 90%;
   max-width: 860px;
   margin: 0 auto;
-  padding-top: 2rem;
+  padding-top: 3rem;
 }
 
 /* @media screen and (max-width: 640px) {
@@ -132,7 +132,7 @@ a:hover { text-decoration: underline; }
 
 .small time { color: #999; }
 .about { margin-bottom: 5rem; }
-.about p { margin: 0; padding: 1rem 0; font-family: 'Merriweather', serif; transition: all 0.5s ease; }
+.about p { margin: 0; padding: 1rem 0; transition: all 0.5s ease; }
 
 @media screen and (min-width: 640px) {
   /* .about p a { color: #333; }
@@ -152,6 +152,7 @@ a:hover { text-decoration: underline; }
   .social-nav-item { display: block; }
 }
 .social-nav-item {
+  font-size: 1.5rem;
   display: inline;
   margin-right: 1em;
   transition: all .2s ease-out;
@@ -159,6 +160,7 @@ a:hover { text-decoration: underline; }
 }
 .social-nav-item:hover {
   transform: scale3d(1.5, 1.5, 2);
+  text-decoration: none;
 }
 .social-nav-item-icon { font-size: 1.5em; }
 .social-nav-item-label { display: none; }
