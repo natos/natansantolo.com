@@ -139,7 +139,7 @@ a:hover { text-decoration: underline; }
   .about p:hover a { color: #09c; } */
 }
 .social-nav {
-    display: flex;
+    display: block;
 }
 @media screen and (min-width: 640px) {
   .social-nav {
@@ -342,4 +342,5 @@ a:hover { text-decoration: underline; }
 }
 .square:hover {
   opacity: 1;
+  transform: scale3d(1.5, 1.5, 2);
 }
