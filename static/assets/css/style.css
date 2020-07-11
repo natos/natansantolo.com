@@ -132,7 +132,12 @@ a:hover { text-decoration: underline; }
 
 .small time { color: #999; }
 .about { margin-bottom: 5rem; }
-.about p { margin: 0; padding: 1rem 0; transition: all 0.5s ease; }
+.about p { margin: 0 -1rem; padding: 1rem; transition: all 0.5s ease; }
+
+/* .about  p:hover {
+  background-color: #ffffff;
+  transform: scale3d(1.15, 1.15, 2);
+} */
 
 @media screen and (min-width: 640px) {
   /* .about p a { color: #333; }
@@ -342,5 +347,8 @@ a:hover { text-decoration: underline; }
 }
 .square:hover {
   opacity: 1;
-  transform: scale3d(1.5, 1.5, 2);
+  /* border-radius: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; */
+  /* transform: scale3d(1.5, 1.5, 2); */
 }
