@@ -6,7 +6,7 @@ languagecode = "en_US"
 layoutdir = "layouts"
 publishdir = "public"
 relativeurls = false
-title = "Natan Santolo"
+title = "Natan Santolo, Design Leadership and Innovation"
 watch = true
 [author]
 name = "Natan Santolo"
@@ -53,7 +53,7 @@ pre = "<i class='fa fa-twitter-square'></i>"
 url = "https://twitter.com/natos"
 weight = 1
 [params]
-Description = "Design and Innovation"
+Description = "Design Leadership and Innovation"
 InstagramToken = "13931722.44ad315.9e06216e9b454e19b048e5e335051691"
 [taxonomies]
 category = "categories"
