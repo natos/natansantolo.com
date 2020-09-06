@@ -31,9 +31,13 @@ app.stage.addChild(rope);
 
 // Listen for animate update
 app.ticker.add((delta) => {
-    // Read mouse points, this could be done also in mousemove/touchmove update. For simplicity it is done here for now.
-    // When implementing this properly, make sure to implement touchmove as interaction plugins mouse might not update on certain devices.
+    // Avoid rendering if data not available
+    if (app.renderer.plugins.interaction.eventData.data === null) {
+        return;
+    }
+    // Read mouse points
     const mouseposition = app.renderer.plugins.interaction.mouse.global;
+    // const mouseposition = app.renderer.plugins.interaction.eventData.data.global;
 
     // Update the mouse values to history
     historyX.pop();
@@ -43,7 +47,6 @@ app.ticker.add((delta) => {
     // Update the points to correspond with history.
     for (let i = 0; i < ropeSize; i++) {
         const p = points[i];
-
         // Smooth the curve with cubic interpolation to prevent sharp edges.
         const ix = cubicInterpolation(historyX, i / ropeSize * historySize);
         const iy = cubicInterpolation(historyY, i / ropeSize * historySize);
