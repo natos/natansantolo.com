@@ -17,44 +17,13 @@ extensions = ["hardLineBreak"]
 fractions = false
 plainIDAnchors = true
 [[menu.social]]
-identifier = "instagram"
-name = "Instagram"
-pre = "<i class='fa fa-instagram'></i>"
-url = "https://www.instagram.com/natansantolo/"
-weight = 6
-[[menu.social]]
-identifier = "tumblr"
-name = "Tumblr"
-pre = "<i class='fa fa-tumblr-square'></i>"
-url = "http://natos.tumblr.com"
-weight = 5
-[[menu.social]]
-identifier = "behance"
-name = "Behance"
-pre = "<i class='fa fa-behance-square'></i>"
-url = "https://www.behance.net/natansan"
-weight = 4
-[[menu.social]]
 identifier = "linkedin"
 name = "LinkedIn"
 pre = "<i class='fa fa-linkedin-square'></i>"
 url = "https://nl.linkedin.com/in/natansantolo"
-weight = 3
-[[menu.social]]
-identifier = "github"
-name = "Github"
-pre = "<i class='fa fa-github-square'></i>"
-url = "https://github.com/natos"
-weight = 2
-[[menu.social]]
-identifier = "twitter"
-name = "Twitter"
-pre = "<i class='fa fa-twitter-square'></i>"
-url = "https://twitter.com/natos"
 weight = 1
 [params]
 Description = "Design, Leadership and Innovation"
-InstagramToken = "13931722.44ad315.9e06216e9b454e19b048e5e335051691"
 [taxonomies]
 category = "categories"
 tag = "tags"

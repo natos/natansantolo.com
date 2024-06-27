@@ -1,25 +1,7 @@
 [links]
-[links.twitter]
-  name = "Twitter"
-  identifier = "twitter"
-  url = "https://twitter.com/natos"
-  icon = "fa fa-twitter-square"
-  weight = 1
-[links.github]
-  name = "Github"
-  identifier = "github"
-  url = "https://github.com/natos"
-  icon = "fa fa-github-square"
-  weight = 2
 [links.linkedin]
   name = "LinkedIn"
   identifier = "linkedin"
   url = "https://www.linkedin.com/in/natansantolo"
   icon = "fa fa-linkedin-square"
   weight = 3
-[links.instagram]
-  name = "Instagram"
-  identifier = "instagram"
-  url = "https://www.instagram.com/natansantolo/"
-  icon = "fa fa-instagram"
-  weight = 6
