@@ -23,7 +23,7 @@ pre = "<i class='fa fa-linkedin-square'></i>"
 url = "https://nl.linkedin.com/in/natansantolo"
 weight = 1
 [params]
-Description = "Design, Leadership and Innovation"
+Description = "Free-range Design Leader"
 [taxonomies]
 category = "categories"
 tag = "tags"

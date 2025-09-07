@@ -12,9 +12,11 @@
 
 body {
   /* 3. Add accessible line-height */
-  line-height: 1.5;
+  line-height: 1.75;
   /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;    /* For Firefox on macOS */
+  text-rendering: optimizeLegibility;    /* Improves kerning and ligatures */
 }
 
 /* 5. Improve media defaults */
@@ -79,11 +81,52 @@ body {
   color: #333;
   background-color: #ffc000;
   font-size: 100%;
-  line-height: 1.75;
   font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   min-height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  /* Multiple gradients for depth, now with darker yellows */
+  background: 
+    radial-gradient(circle at 20% 30%, #ffb300 0%, transparent 70%),
+    radial-gradient(circle at 80% 70%, #e6a100 0%, transparent 80%),
+    radial-gradient(circle at 60% 20%, #ffd54d 0%, transparent 80%),
+    radial-gradient(circle at 40% 80%, #cc8c00 0%, transparent 80%);
+  opacity: 0.7;
+  animation: bgMove 18s linear infinite;
+}
+
+@keyframes bgMove {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      80% 0%,
+      0% 80%;
+  }
+  50% {
+    background-position:
+      40% 60%,
+      60% 40%,
+      20% 80%,
+      80% 20%;
+  }
+  100% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      80% 0%,
+      0% 80%;
+  }
 }
 
 p {
@@ -170,14 +213,26 @@ a:hover {
   }
 } */
 
+.natan-video {
+  border-radius: 100%;
+}
 .natan-photo {
   width: 25%;
+  height: 25%;
   float: right;
   border: 0.5rem solid #ffffff;
   padding: 0.25rem;
   border-radius: 100%;
-  transition: all ease-in 0.2s;
+  /* transition: all ease-in 0.2s; */
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1);
+  will-change: transform;
+  /* Use CSS variables for X and Y rotation */
+  transform: perspective(600px)
+    rotateX(var(--photo-rotate-x, 0deg))
+    rotateY(var(--photo-rotate-y, 0deg));
 }
+
+
 
 /* .natan-photo:hover {
   border: 0 solid #ffffff;
@@ -322,4 +377,17 @@ canvas {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; */
   /* transform: scale3d(1.5, 1.5, 2); */
+}
+
+.only-desktop {
+  display: block;
+}
+
+@media screen and (max-width: 640px) {
+  h1 {
+    font-size: 35px;
+  }
+  .only-desktop {
+    display: none !important;
+  }
 }
