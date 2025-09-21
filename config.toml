@@ -27,3 +27,7 @@ Description = "Free-range Design Leader"
 [taxonomies]
 category = "categories"
 tag = "tags"
+[frontmatter]
+slug = [ "slug", "title" ]
+[permalinks]
+book = "/:section/:title/"

@@ -1,0 +1,31 @@
+{{ define "main" }}
+<main class="wrap">
+  <article class="article">
+    <header>
+        <h1><a href="{{ .Params.href }}" title="{{ .Title }}" target="_blank">{{ .Title }}</a></h1>
+        <p>{{ .Description }}</p>
+    </header>
+    <figure>
+      <a href="{{ .Params.href }}" target="_blank"><img src="{{ .Params.image }}" alt="{{ .Params.caption }}" /></a>
+    </figure>
+    <div class="content">{{ .Content }}</div>
+    <time datetime="{{ .Date.Format "Jan 2, 2006" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    <!-- <nav class="more">
+      <ul class="tags">
+        {{ range .Params.tags }}
+          <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+        {{ end }}
+      </ul>
+    </nav> -->
+  </article>
+  <nav class="pagination">
+    {{ if .PrevInSection }}
+    <a href="{{ .PrevInSection.Permalink }}"><i class="fa fa-long-arrow-left"></i> Prev article</a>
+    {{ end }}
+
+    {{ if .NextInSection }}
+    <a href="{{ .NextInSection.Permalink }}">Next article <i class="fa fa-long-arrow-right"></i></a>
+    {{ end }}
+  </nav>
+</main>
+{{ end }}

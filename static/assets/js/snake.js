@@ -1,14 +1,28 @@
 // Responsive, transparent Snake Game with PIXI.js
 
-const app = new PIXI.Application({
-  transparent: true,
-  resizeTo: document.body,
-});
-document.body.appendChild(app.view);
+const snakeCanvasEl = document.getElementById('snake-canvas');
+const canvasWidth = snakeCanvasEl?.clientWidth || 400;
+const canvasHeight = snakeCanvasEl?.clientHeight || 400;
 
-let gridSize = 24;
-let tileCountX = Math.floor(window.innerWidth / gridSize);
-let tileCountY = Math.floor(window.innerHeight / gridSize);
+const app = new PIXI.Application({
+  width: canvasWidth,
+  height: canvasHeight,
+  transparent: true,
+  antialias: true,
+  autoDensity: true,
+  preserveDrawingBuffer: false
+});
+
+if (snakeCanvasEl) {
+  snakeCanvasEl.appendChild(app.view);
+} else {
+  document.body.appendChild(app.view);
+}
+
+// Base grid size on canvas size for responsiveness
+const gridSize = Math.max(16, Math.floor(Math.min(canvasWidth, canvasHeight) / 18));
+let tileCountX = Math.floor(canvasWidth / gridSize);
+let tileCountY = Math.floor(canvasHeight / gridSize);
 
 let snake = [{ x: Math.floor(tileCountX / 2), y: Math.floor(tileCountY / 2) }];
 let direction = { x: 1, y: 0 };
@@ -23,16 +37,18 @@ let foodPulse = 0;
 const snakeGraphics = new PIXI.Graphics();
 const foodGraphics = new PIXI.Graphics();
 const pointsText = new PIXI.Text('Points: 0', {
-  fill: '#222222', // Same as snake color
-  fontSize: 24,
+  fill: '#222222',
+  fontSize: Math.max(18, Math.floor(gridSize * 1.1)),
   fontFamily: 'monospace',
 });
 app.stage.addChild(snakeGraphics, foodGraphics, pointsText);
 
 function resizeGame() {
-  tileCountX = Math.floor(window.innerWidth / gridSize);
-  tileCountY = Math.floor(window.innerHeight / gridSize);
-  app.renderer.resize(window.innerWidth, window.innerHeight);
+  const w = snakeCanvasEl?.clientWidth || 400;
+  const h = snakeCanvasEl?.clientHeight || 400;
+  app.renderer.resize(w, h);
+  tileCountX = Math.floor(w / gridSize);
+  tileCountY = Math.floor(h / gridSize);
   // Clamp snake and food positions to new bounds
   snake.forEach(part => {
     part.x = Math.max(0, Math.min(tileCountX - 1, part.x));
@@ -47,7 +63,7 @@ window.addEventListener('resize', resizeGame);
 function draw() {
   snakeGraphics.clear();
   // Draw snake (dark gray, semi-transparent)
-  snakeGraphics.beginFill(0x222222, 0.7); // 0.7 alpha for transparency
+  snakeGraphics.beginFill(0x222222, 0.7);
   snake.forEach(part => {
     snakeGraphics.drawRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
   });
@@ -58,7 +74,7 @@ function draw() {
   const pulseScale = 1 + 0.2 * Math.sin(foodPulse);
   const foodSize = gridSize * pulseScale;
   const offset = (gridSize - foodSize) / 2;
-  foodGraphics.beginFill(0xffffff, 0.7); // 0.7 alpha for transparency
+  foodGraphics.beginFill(0xffffff, 0.7);
   foodGraphics.drawRect(
     food.x * gridSize + offset,
     food.y * gridSize + offset,
@@ -111,13 +127,13 @@ function placeFood() {
 // Place food almost to the right border, aligned with the snake's row
 function placeInitialFood() {
   const head = snake[0];
-  // Place food 2 columns from the right edge, same row as snake
   const fx = tileCountX - 2;
   const fy = head.y;
   food = { x: fx, y: fy };
 }
 
 window.addEventListener('keydown', (e) => {
+  event.preventDefault();
   if (e.key === 'ArrowUp' && direction.y !== 1) nextDirection = { x: 0, y: -1 };
   if (e.key === 'ArrowDown' && direction.y !== -1) nextDirection = { x: 0, y: 1 };
   if (e.key === 'ArrowLeft' && direction.x !== 1) nextDirection = { x: -1, y: 0 };
@@ -134,7 +150,7 @@ app.ticker.add(() => {
     draw();
     moveCounter = 0;
   } else {
-    draw(); // Redraw for food pulse animation even if not moving
+    draw();
   }
 });
 

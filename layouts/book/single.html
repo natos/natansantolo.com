@@ -1,0 +1,56 @@
+{{ define "main" }}
+<aside class="chapter-toc">
+  <div class="toc-inner">
+    <ul>
+      {{ range .CurrentSection.Pages.ByWeight }}
+        <li>
+          <a href="{{ .RelPermalink | urlize }}">{{ .Title }}</a>
+          {{ if eq .RelPermalink $.RelPermalink }}
+            {{ if ne .TableOfContents "" }}
+                {{ .TableOfContents }}
+            {{ end }}
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="chapter-toc-toggle" tabindex="0" title="Show chapter index">
+    &#9776; <!-- Unicode hamburger icon -->
+  </div>
+</aside>
+
+<article class="book-chapter wrap">
+
+  <!-- Optional chapter image -->
+  {{ with .Params.image }}
+    <figure>
+      <img src="{{ . }}" alt="{{ $.Title }}">
+    </figure>
+  {{ end }}
+
+  <!-- Title -->
+  <header class="mb-8 text-center">
+    <h1>{{ .Title }}</h1>
+    {{ with .Date }}<p>{{ .Format "January 2, 2006" }}</p>{{ end }}
+  </header>
+
+  <!-- Chapter content -->
+  <section class="chapter-content">
+    {{ .Content }}
+  </section>
+<!-- Navigation -->
+<nav class="chapter-nav wrap">
+  <!-- {{ with .NextInSection }}
+    <a href="{{ .RelPermalink | urlize }}">{{ .Title }}</a>
+  {{ else }}
+    <span></span>
+  {{ end }}
+   ||  -->
+  {{ with .PrevInSection }}
+    <a href="{{ .RelPermalink | urlize }}">{{ .Title }}</a>
+  {{ else }}
+    <span></span>
+  {{ end }}
+</nav>
+</article>
+{{ end }}

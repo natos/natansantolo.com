@@ -8,65 +8,13 @@
 /* 2. Remove default margin */
 * {
   margin: 0;
-}
-
-body {
-  /* 3. Add accessible line-height */
-  line-height: 1.75;
-  /* 4. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;    /* For Firefox on macOS */
-  text-rendering: optimizeLegibility;    /* Improves kerning and ligatures */
-}
-
-/* 5. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 6. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 7. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 8. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/*
-  9. Create a root stacking context
-*/
-#root,
-#__next {
-  isolation: isolate;
+  box-sizing: border-box;
+  /* -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
 }
 
 html,
@@ -74,19 +22,15 @@ body {
   padding: 0;
   margin: 0;
 }
-html {
-  height: 100%;
-}
 body {
-  color: #333;
-  background-color: #ffc000;
-  font-size: 100%;
-  font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
+  min-height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  min-height: 100%;
   position: relative;
-  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;    /* For Firefox on macOS */
+  text-rendering: optimizeLegibility;    /* Improves kerning and ligatures */
+  background-color: #ffc000;
 }
 
 body::before {
@@ -129,30 +73,74 @@ body::before {
   }
 }
 
-p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+/* --- Headers --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin-bottom: 1em;
+  letter-spacing: 0.01em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
-body * {
-  box-sizing: border-box;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome, Edge, Opera and Firefox */
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.25;
-}
 h1 {
-  font-size: 55px;
+  margin-bottom: 1.5em;
+  max-width: 18ch;
+}
+h2 {
+  margin-bottom: 1em;
+  max-width: 28ch;
+}
+h3, h4, h5, h6 {
+  margin-bottom: 0.75em;
+  max-width: 32ch;
+}
+
+/* --- Paragraphs --- */
+p {
+  max-width: 65ch;
+  margin-bottom: 1.5em;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+/* --- Lists --- */
+ul, ol {
+  padding-left: 2em;
+  margin-bottom: 1.5em;
+  max-width: 65ch;
+}
+
+li {
+  margin-bottom: 0.5em;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 640px) {
+  h1 {
+    margin-bottom: 1em;
+  }
+}
+
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1 {
   margin-bottom: 55px;
 }
 h2,
@@ -160,11 +148,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 24px;
   margin-bottom: 24px;
 }
 p {
-  font-size: 18px;
   margin-bottom: 32px;
 }
 small {
@@ -179,39 +165,36 @@ footer {
   padding-bottom: 2rem;
 }
 
-@media screen and (min-width: 640px) {
-  h1 {
-    font-size: 48px;
-  }
-  h2 {
-    font-size: 32px;
-  }
-  p {
-    font-size: 20px;
-  }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;;
 }
-
 a {
-  text-decoration: none;
+  color: #333;
   transition: all 0.5s ease;
 }
-/* a:visited { color: #333; } */
+a:visited { color: #333; }
 a:hover {
   text-decoration: underline;
 }
 
 .wrap {
   width: 90%;
-  max-width: 860px;
+  max-width: 68ch;
+  /* max-width: 860px; */
   margin: 0 auto;
   padding-top: 3rem;
 }
 
-/* @media screen and (max-width: 640px) {
-  .wrap {
-    padding: 2.5em 7% 5em 7%;
-  }
-} */
+header {
+  margin-bottom: 5rem;
+}
+
+header h1 {
+  margin-bottom: 1rem;
+}
+header h1 + h3 {
+ margin-top: 0;
+}
 
 .natan-video {
   border-radius: 100%;
@@ -232,88 +215,23 @@ a:hover {
     rotateY(var(--photo-rotate-y, 0deg));
 }
 
-
-
-/* .natan-photo:hover {
-  border: 0 solid #ffffff;
-  padding: 0;
-} */
-
 @media screen and (max-width: 640px) {
   .natan-photo {
     width: 50%;
     float: none;
   }
-  canvas {
-    display: none;
-  }
 }
 
-canvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+#snake-game {
+  margin: 2rem auto 0 auto;
+  border: 0.5rem solid #ffffff;
+  border-radius: 1rem;
+  background-color: rgba(255,255,255,0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  /* width: 400px;
+  height: 400px; */
 }
 
-.m-0 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.mb {
-  margin-bottom: 5em;
-}
-.mb a {
-  color: #333;
-}
-.mb a:hover {
-  text-decoration: none;
-}
-.mb p::before {
-  content: "(";
-}
-.mb p::after {
-  content: ")";
-}
-.article {
-  margin-bottom: 3rem;
-}
-.article img {
-  max-width: 100%;
-}
-
-.center {
-  text-align: center;
-}
-.fl {
-  float: left;
-}
-.fr {
-  float: right;
-}
-
-.small time {
-  color: #999;
-}
-.about {
-  margin-bottom: 5rem;
-}
-.about p {
-  margin: 0 -1rem;
-  padding: 1rem;
-  transition: all 0.5s ease;
-}
-
-/* .about  p:hover {
-  background-color: #ffffff;
-  transform: scale3d(1.15, 1.15, 2);
-} */
-
-@media screen and (min-width: 640px) {
-  /* .about p a { color: #333; }
-  .about p:hover a { color: #09c; } */
-}
 .social-nav {
   display: block;
 }
@@ -334,7 +252,6 @@ canvas {
   display: inline;
   margin-right: 1em;
   transition: all 0.2s ease-out;
-  color: #333;
 }
 .social-nav-item:hover {
   transform: scale3d(1.5, 1.5, 2);

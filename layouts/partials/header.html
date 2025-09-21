@@ -1,0 +1,19 @@
+<header>
+  <div class="natan-photo">
+  <video
+    id="natan-video"
+    class="natan-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    poster="/assets/NatanSantoloPhoto.jpg"
+  >
+    <source src="/assets/NatanSantoloVideo.mp4" type="video/mp4" />
+    <img src="/assets/NatanSantoloPhoto.jpg" />
+  </video>
+  </div>
+  <h1>{{ .Site.Title }}</h1>
+  <h3>{{ .Site.Params.Description }}</h3>
+</header>
+<script src="/assets/js/perspective.js"></script>
