@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="book-chapter wrap">
+  {{ with .Params.image }}
+    <figure>
+      <img src="{{ . }}" alt="{{ $.Title }}">
+    </figure>
+  {{ end }}
+  <h1>{{ .Title }}</h1>
+  {{ range .Pages.ByWeight }}
+  <a href="{{ .RelPermalink | urlize }}">{{ .Title }}</a><br />
+  {{ end }}
+  <time datetime="{{ .Date.Format "Jan 02, 2006" }}">{{ .Date.Format "2006.01.02" }}</time>
+</div>
+{{ end }}

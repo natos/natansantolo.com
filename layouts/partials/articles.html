@@ -1,17 +1,8 @@
 <section class="articles">
-  <h3>I'm not a writer</h3>
-  <p>But some times I write about
-    <span class="taxonomies tags">
-      {{ range $taxonomyname, $taxonomy := .Site.Taxonomies.tags }}
-        <span class="taxonomy tag">{{ $taxonomyname }}</span>
-      {{ end }}
-    </span>
-    etc.
-  </p>
-
-  {{ $paginator := .Paginate (.Data.Pages) }}
-  {{ range $paginator.Pages }}
-    {{ .Render "li"}}
-  {{ end }}
+  {{ $posts := where .Site.RegularPages "Section" "post" }}
+  {{ $paginator := .Paginate $posts }}
+    {{ range $paginator.Pages }}
+        {{ .Render "li" }}
+    {{ end }}
+  {{ partial "pagination.html" $paginator }}
 </section>
-{{ partial "pagination.html" $paginator }}

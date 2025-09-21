@@ -1,6 +1,7 @@
 {{ define "main" }}
 <main class="wrap">
+  {{ partial "header.html" . }}
   {{ partial "intro.html" . }}
-  <!-- {{ partial "articles.html" . }} -->
+  {{ partial "articles.html" . }}
 </main>
 {{ end }}

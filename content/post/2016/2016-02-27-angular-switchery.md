@@ -8,6 +8,7 @@ categories = [
   "Components"
 ]
 slug = "angular-switchery"
+draft = true
 +++
 
 ![Switchery](/assets/images/angular-switchery/switchery.png)
