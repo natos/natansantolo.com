@@ -1,0 +1,36 @@
+baseurl: "https://www.natansantolo.com/"
+builddrafts: false
+canonifyurls: true
+contentdir: "content"
+languagecode: "en_US"
+layoutdir: "layouts"
+publishdir: "public"
+relativeurls: false
+title: "Natan Santolo"
+watch: true
+
+author:
+  name: "Natan Santolo"
+
+params:
+  Description: "Free-range Design Leader"
+
+blackfriday:
+  SectionPagesMenu: "social"
+  angledQuotes: true
+  extensions:
+    - "hardLineBreak"
+  fractions: false
+  plainIDAnchors: true
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+frontmatter:
+  slug:
+    - "slug"
+    - "title"
+
+permalinks:
+  book: "/:section/:title/"
