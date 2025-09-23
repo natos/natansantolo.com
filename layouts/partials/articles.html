@@ -1,4 +1,5 @@
 <section class="articles">
+  <h4>Articles</h4>
   {{ $posts := where .Site.RegularPages "Section" "post" }}
   {{ $paginator := .Paginate $posts }}
     {{ range $paginator.Pages }}

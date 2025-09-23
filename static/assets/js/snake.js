@@ -1,8 +1,9 @@
 // Responsive, transparent Snake Game with PIXI.js
-
+const defaultWidth = 398;
+const defaultHeight = 444;
 const snakeCanvasEl = document.getElementById('snake-canvas');
-const canvasWidth = snakeCanvasEl?.clientWidth || 400;
-const canvasHeight = snakeCanvasEl?.clientHeight || 400;
+const canvasWidth = snakeCanvasEl?.clientWidth || defaultWidth;
+const canvasHeight = snakeCanvasEl?.clientHeight || defaultHeight;
 
 const app = new PIXI.Application({
   width: canvasWidth,
@@ -44,8 +45,8 @@ const pointsText = new PIXI.Text('Points: 0', {
 app.stage.addChild(snakeGraphics, foodGraphics, pointsText);
 
 function resizeGame() {
-  const w = snakeCanvasEl?.clientWidth || 400;
-  const h = snakeCanvasEl?.clientHeight || 400;
+  const w = snakeCanvasEl?.clientWidth || defaultWidth;
+  const h = snakeCanvasEl?.clientHeight || defaultHeight;
   app.renderer.resize(w, h);
   tileCountX = Math.floor(w / gridSize);
   tileCountY = Math.floor(h / gridSize);
@@ -133,7 +134,7 @@ function placeInitialFood() {
 }
 
 window.addEventListener('keydown', (e) => {
-  event.preventDefault();
+  e.preventDefault();
   if (e.key === 'ArrowUp' && direction.y !== 1) nextDirection = { x: 0, y: -1 };
   if (e.key === 'ArrowDown' && direction.y !== -1) nextDirection = { x: 0, y: 1 };
   if (e.key === 'ArrowLeft' && direction.x !== 1) nextDirection = { x: -1, y: 0 };
