@@ -1,5 +1,5 @@
 ---
-title: "I wrote a book for designers about AI"
+title: "I Wrote A Book For Designers About AI"
 description: "The moment I knew I had to write this book happened during what should have been a routine coaching session."
 tags:
   - AI and design
