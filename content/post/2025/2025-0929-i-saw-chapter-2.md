@@ -18,15 +18,19 @@ categories:
 slug: "i-saw-chapter-2"
 ---
 
-Pichet Klunchun from Thailand gave me and a small group of people an experience I'm going to talk about for a long time.
+![Chapter 2](/assets/images/i-saw-chapter-2/chapter-2.png)
 
-Look, everything started when my wife asked me, "Would you like to go see a play? A guy is doing something with Thai dance and AI." Immediately I thought to myself, *I want to see that—it makes no sense at all.* And either way, I love performances of any kind. I didn't ponder it much. She got the tickets and that was it.
+[Pichet Klunchun](https://www.instagram.com/pichetklunchundancecompany/) from Thailand gave me and a small group of people an experience I'm going to talk about for a long time.
+
+Look, everything started when my wife asked me, "Would you like to go see a play? A guy is doing something with Tai Chi and AI." Immediately I thought to myself, *I want to see that—it makes no sense at all.* And either way, I love performances of any kind. I didn't ponder it much. She got the tickets and that was it.
 
 ## The Walk to Esplanade
 
 On Sunday, the day of the performance, we decided to walk. Because regardless of the hot weather, this is Singapore—you can connect extensive kilometers of malls and underpasses, enjoying the cooling airs of the indoors.
 
 The Esplanade is an amazing place. The building itself is incredible, the events are diverse and frequent. I wish I could go more often. Chapter 2 was showing at the Annexe—small audience. For me, that means better bonding with the artist. A more personal, intimate experience.
+
+![Esplanade](/assets/images/i-saw-chapter-2/esplanade-architecture.jpg)
 
 ## Something Felt Off
 
@@ -41,6 +45,8 @@ Pichet walks out and silently takes his seat at the desk. Opens the laptop. On t
 At that point, I must admit, I felt uncomfortable.
 
 There's something about watching someone interact with a chat window. The sound of a muted keyboard. The letters coming one by one. The back and forth when the writer makes a mistake. That special moment when the message is sent—the expectation of a reply.
+
+![Thai Script](/assets/images/i-saw-chapter-2/thai-script.jpg)
 
 Added to all these nuances was the fact that Pichet was writing in Thai. I love Thai script. Everything about it. I don't understand a single thing, so I just focus on appreciating the aesthetics of it—the lines and wiggles, the ups and the downs.
 
@@ -67,5 +73,7 @@ The show continued in blocks: dialogue with AI, then Pichet's dance performances
 Pichet is **The Augmented Artist**.
 
 And I'm really happy to have met him.
+
+{{< youtube "tnyndGL7CEY" >}}
 
 *Seen something that blurred the lines between human and AI in ways that surprised you? I want to hear about it. Let's keep this conversation going.*
