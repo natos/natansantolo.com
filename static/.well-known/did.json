@@ -13,15 +13,15 @@
     }
   ],
   "authentication": [
-    "did:web:natansantolo.com##primary"
+    "did:web:natansantolo.com#primary"
   ],
   "assertionMethod": [
-    "did:web:natansantolo.com##primary"
+    "did:web:natansantolo.com#primary"
   ],
   "capabilityInvocation": [
-    "did:web:natansantolo.com##primary"
+    "did:web:natansantolo.com#primary"
   ],
   "capabilityDelegation": [
-    "did:web:natansantolo.com##primary"
+    "did:web:natansantolo.com#primary"
   ]
 }
