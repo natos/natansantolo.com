@@ -1,14 +1,13 @@
 ---
 type: "page"
 title: "Work"
+description: "“Create what you wish existed”"
 date: 2026-01-04
 draft: false
 author: "Natan Santolo"
 layout: "post"
 slug: "portfolio"
 ---
-
-"Create what you wish existed."
 
 These are a few snapshots of selected work. Portfolio is available upon request.
 
@@ -33,7 +32,7 @@ A webapp for fitness coaches to share programs and keep track of their client's 
 
 A design vision for Affinidi Agentic AI Governance and Monitoring tool that is currently under development.
 
-{{< video src="/assets/work/affinidi-aix.mov" >}}
+{{< video src="/assets/work/affinidi-aix.mp4" >}}
 
 ### Ayra Cards
 
@@ -42,11 +41,11 @@ A mobile App as demo for [Ayra Cards](https://ayra.forum/whitepapers/) for digit
 {{% columns %}}
   {{% column %}}
 lo-fi
-{{< video src="/assets/work/ayra-cards-lo-fi.mov" >}}
+{{< video src="/assets/work/ayra-cards-lo-fi.mp4" >}}
   {{% /column %}}
   {{% column %}}
 hi-fi
-{{< video src="/assets/work/ayra-cards-hi-fi.mov" >}}
+{{< video src="/assets/work/ayra-cards-hi-fi.mp4" >}}
   {{% /column %}}
 {{% /columns %}}
 

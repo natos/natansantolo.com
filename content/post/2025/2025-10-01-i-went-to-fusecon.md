@@ -1,6 +1,7 @@
 ---
 title: "I Went to Fusecon and the Most Provoking Idea I Heard Was About a Potato"
 description: "When a dinner conversation about potatoes sparked more insight than an entire day of AI presentations, I realized what's been missing from conferences lately."
+image: "/assets/images/i-went-to-fusecon/fusecon.png"
 tags:
   - conferences
   - AI
@@ -22,8 +23,6 @@ categories:
   - conferences
 slug: "i-went-to-fusecon"
 ---
-
-![Fusecon](/assets/images/i-went-to-fusecon/fusecon.png)
 
 AI. AI. AI. The only content that didn't mention AI at this conference was the lunchtime announcement.
 
