@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "did:web:natansantolo.com",
+  "verificationMethod": [
+    {
+      "id": "did:web:natansantolo.com#primary",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:natansantolo.com",
+      "publicKeyMultibase": "z6MkjjddgvRPB2xq9rUXmgkDtP4cpNLdTYjFBQ34F9KR9TeN"
+    }
+  ],
+  "authentication": [
+    "did:web:natansantolo.com#primary"
+  ],
+  "assertionMethod": [
+    "did:web:natansantolo.com#primary"
+  ],
+  "capabilityInvocation": [
+    "did:web:natansantolo.com#primary"
+  ],
+  "capabilityDelegation": [
+    "did:web:natansantolo.com#primary"
+  ]
+}
