@@ -1,6 +1,7 @@
 ---
 title: "The Calendar Invite That Almost Drove Me Mad"
 description: "When a simple calendar invite caused existential panic, it became the perfect example of why context matters in UX design. A practical exploration of user perspective and human-centered design principles."
+image: "/assets/images/context-of-use/calendar-invite.png"
 tags:
   - Context of Use
   - User Experience Design
@@ -11,8 +12,6 @@ categories:
   - design
 slug: "the-calendar-invite-that-almost-drove-me-mad"
 ---
-
-![The Calendar Invite That Almost Drove Me Mad](/assets/images/context-of-use/calendar-invite.png)
 
 Look, I thought I was losing my mind.
 

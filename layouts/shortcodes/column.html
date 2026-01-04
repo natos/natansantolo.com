@@ -1,0 +1,4 @@
+{{- $width := .Get "width" | default "1" -}}
+<div class="column" style="flex: {{ $width }}; min-width: 0;">
+{{- .Inner -}}
+</div>

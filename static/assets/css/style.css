@@ -115,6 +115,20 @@ li {
   overflow-wrap: break-word;
 }
 
+/* --- Redability Hakcs --- */
+
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: #ffd54d 0px 0px 2px, #6e4b00 0px 0px 3px;
+  letter-spacing: -.0125em;
+}
+a, p, li, small, time, code, pre,  blockquote, td, th, caption, summary, label {
+  text-shadow: #ffd54d 0px 0px 1px, #6e4b00 0px 0px 2px;
+}
+
+time {
+  letter-spacing: -0.05em;;
+}
+
 @media screen and (max-width: 640px) {
   h1 {
     margin-bottom: 1em;
@@ -247,19 +261,19 @@ header h1 + h3 {
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 8px rgba(255,255,255,0.5);
+    box-shadow: 0 0 8px rgba(255, 225, 0, 0.5);
   }
   0% {
-    box-shadow: 0 0 12px rgba(255,255,255,0.5);
+    box-shadow: 0 0 12px rgba(255, 225, 0, 0.5);
   }
   0% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.5);
+    box-shadow: 0 0 6px rgba(255, 225, 0, 0.5);
   }
   0% {
-    box-shadow: 0 0 12px rgba(255,255,255,0.5);
+    box-shadow: 0 0 12px rgba(255, 225, 0, 0.5);
   }
   100% {
-    box-shadow: 0 0 9px rgba(255,255,255,1);
+    box-shadow: 0 0 9px rgba(255, 225, 0, 0.5);
   }
 }
 
@@ -350,6 +364,6 @@ header h1 + h3 {
   }
 }
 
-.articles {
+.posts {
   margin-top: 4rem;
 }

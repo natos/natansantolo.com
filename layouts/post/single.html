@@ -1,15 +1,15 @@
 {{ define "main" }}
 <main class="wrap">
-  <article class="article">
+  <article class="post">
     <header>
+        <time datetime="{{ .Date.Format "Jan 2, 2006" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
         <h1><a href="{{ .Params.href }}" title="{{ .Title }}" target="_blank">{{ .Title }}</a></h1>
         <p>{{ .Description }}</p>
+        <figure>
+          <img src="{{ .Params.image }}" alt="{{ .Params.caption }}" />
+        </figure>
     </header>
-    <figure>
-      <a href="{{ .Params.href }}" target="_blank"><img src="{{ .Params.image }}" alt="{{ .Params.caption }}" /></a>
-    </figure>
     <div class="content">{{ .Content }}</div>
-    <time datetime="{{ .Date.Format "Jan 2, 2006" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
     <!-- <nav class="more">
       <ul class="tags">
         {{ range .Params.tags }}

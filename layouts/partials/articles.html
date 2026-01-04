@@ -1,5 +1,5 @@
-<section class="articles">
-  <h4>Articles</h4>
+<section class="Posts">
+  <h4>Posts</h4>
   {{ $posts := where .Site.RegularPages "Section" "post" }}
   {{ $paginator := .Paginate $posts }}
     {{ range $paginator.Pages }}
