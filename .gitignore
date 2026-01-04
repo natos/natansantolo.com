@@ -2,3 +2,7 @@
 deploy.sh
 public
 .note_*
+*.mp4
+*.mov
+*.mp3
+*.wav
