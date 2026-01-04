@@ -7,6 +7,9 @@ draft: false
 author: "Natan Santolo"
 layout: "post"
 slug: "portfolio"
+aliases:
+  - /work/porfolio/
+  - /work/portafolio/
 ---
 
 These are a few snapshots of selected work. Portfolio is available upon request.
@@ -38,24 +41,25 @@ A design vision for Affinidi Agentic AI Governance and Monitoring tool that is c
 
 A mobile App and a Verifier Website as demo for [Ayra Cards](https://ayra.forum/whitepapers/) for digital trust interactions across mutliple domains.
 
+Mobile App
 {{% columns %}}
   {{% column %}}
-  Ayra Cards Demo
 ![Ayra Cards Demo](/assets/work/ayra-cards-demo.png)
   {{% /column %}}
   {{% column %}}
-lo-fi
 {{< video src="https://work.natansantolo.com/ayra-cards-lo-fi.mp4" >}}
   {{% /column %}}
   {{% column %}}
-hi-fi
 {{< video src="https://work.natansantolo.com/ayra-cards-hi-fi.mp4" >}}
   {{% /column %}}
 {{% /columns %}}
 
-verifiers' website
+Website
+{{% columns %}}
+  {{% column %}}
 {{< video src="https://work.natansantolo.com/ayra-cards-verifiers.mp4" >}}
-
+  {{% /column %}}
+{{% /columns %}}
 ### Affinidi Identity Wallets
 
 Different decentralized identity wallets
