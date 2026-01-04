@@ -46,7 +46,7 @@ body {
 .book-chapter p {
   margin-bottom: 1.5em;
   text-indent: 2em;                    /* Indent first line for book feel */
-}
+/*}*/
 
 .book-chapter p:first-child {
   text-indent: 0;                      /* No indent for first paragraph */
