@@ -1,6 +1,7 @@
 ---
 title: "I Wrote A Book For Designers About AI"
 description: "The moment I knew I had to write this book happened during what should have been a routine coaching session."
+image: "/assets/images/the-augmented-designer/about-this-book.png"
 tags:
   - AI and design
   - design career
@@ -9,7 +10,6 @@ categories:
   - design
 slug: "i-wrote-a-book-about-ai"
 ---
-
 
 ### Why I Wrote ["The Augmented Designer"](/the-augmented-designer/)
 

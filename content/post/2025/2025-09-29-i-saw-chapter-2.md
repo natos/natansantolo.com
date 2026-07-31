@@ -1,6 +1,7 @@
 ---
 title: "I Saw Chapter 2 and I Can't Wait for Chapter 3"
 description: "A Thai dancer, a chat window, and the most compelling case for human-AI collaboration I've seen on stage. This is what augmentation looks like when it's done right."
+image: "/assets/images/i-saw-chapter-2/chapter-2.png"
 tags:
   - AI Collaboration
   - Performance Art
@@ -17,8 +18,6 @@ categories:
   - art
 slug: "i-saw-chapter-2"
 ---
-
-![Chapter 2](/assets/images/i-saw-chapter-2/chapter-2.png)
 
 [Pichet Klunchun](https://www.instagram.com/pichetklunchundancecompany/) from Thailand gave me and a small group of people an experience I'm going to talk about for a long time.
 

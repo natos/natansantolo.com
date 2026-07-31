@@ -9,3 +9,7 @@ deploy.sh
 public
 .note_*
 .hugo_build.lock
+*.mp4
+*.mov
+*.mp3
+*.wav

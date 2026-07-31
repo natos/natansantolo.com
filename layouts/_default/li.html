@@ -3,7 +3,19 @@
     <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
   {{ end }}
   <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+  {{ with .Params.image }}
+    <figure>
+      <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+    </figure>
+  {{ end }}
   {{ with .Description }}
     <p>{{ . }}</p>
   {{ end }}
 </article>
+<section class="wrap post">
+  {{ $posts := where .Pages "Type" "post" }}
+  {{ range $posts }}
+    {{ .Render "li" }}
+  {{ end }}
+</section>
+

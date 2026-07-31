@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="wrap articles">
+<section class="wrap post">
   {{ $posts := where .Pages "Type" "post" }}
   {{ range $posts }}
     {{ .Render "li" }}
