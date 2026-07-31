@@ -100,27 +100,6 @@ main.wrap {
   padding-bottom: var(--space-9);
 }
 
-.natan-video {
-  border-radius: 100%;
-}
-.natan-photo {
-  border: 0.5rem solid var(--color-surface);
-  padding: 0.25rem;
-  border-radius: 100%;
-  transition: transform 0.2s cubic-bezier(.4,2,.6,1);
-  will-change: transform;
-  /* Use CSS variables for X and Y rotation */
-  transform: perspective(600px)
-    rotateX(var(--photo-rotate-x, 0deg))
-    rotateY(var(--photo-rotate-y, 0deg));
-}
-
-@media screen and (max-width: 640px) {
-  .natan-photo {
-    width: 50%;
-    float: none;
-  }
-}
 #arcade {
   position: relative;
   width: 643px;
@@ -339,14 +318,16 @@ main.wrap {
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
+  overflow: hidden;
   background: var(--color-accent);
-  color: var(--color-accent-contrast);
-  font-family: var(--font-serif);
-  font-size: var(--fs-100);
-  font-weight: 900;
-  letter-spacing: -0.02em;
   box-shadow: var(--shadow-sm);
+}
+.brand__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .brand__name {
   font-family: var(--font-serif);
@@ -413,7 +394,7 @@ main.wrap {
 }
 
 /* =========================================================
-   Eyebrow label — small amber-tick section marker.
+   Eyebrow label — small amber-dot section marker.
    ========================================================= */
 .eyebrow {
   display: flex;
@@ -429,8 +410,8 @@ main.wrap {
 }
 .eyebrow::before {
   content: "";
-  width: 1.75rem;
-  height: 2px;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: var(--radius-full);
   background: var(--color-accent);
 }
@@ -545,12 +526,6 @@ main.wrap {
   gap: var(--space-6);
   align-items: center;
 }
-@media (min-width: 720px) {
-  .hero {
-    grid-template-columns: 1fr minmax(180px, 240px);
-    gap: var(--space-8);
-  }
-}
 .hero__name {
   margin: 0 0 var(--space-4);
   font-size: var(--fs-800);
@@ -564,24 +539,6 @@ main.wrap {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-}
-.hero__portrait {
-  order: -1;
-  width: clamp(8rem, 40vw, 14rem);
-}
-@media (min-width: 720px) {
-  .hero__portrait {
-    order: 0;
-    width: 100%;
-  }
-}
-.hero__portrait .natan-video,
-.hero__portrait video {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
 }
 
 /* =========================================================
@@ -723,7 +680,7 @@ main.wrap {
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   padding: var(--space-5) var(--space-6);
   box-shadow: var(--shadow-sm);
   transition: transform var(--dur-med) var(--ease-standard),
@@ -736,10 +693,17 @@ main.wrap {
   border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
 }
 
-/* Featured (lead) article gets a larger title and accent edge. */
+/* Featured (lead) article gets a larger title. */
 .card--featured {
   padding: var(--space-6) var(--space-7);
-  border-left: 3px solid var(--color-accent);
+}
+.card--featured .card__meta::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
 }
 .card--featured .card__title {
   font-size: var(--fs-600);

@@ -18,19 +18,4 @@ const articles = localizePath(`/${sections.post[lang]}/`, lang);
       <a class="btn-ghost" href={articles}>{t('hero.ctaWriting')}</a>
     </div>
   </div>
-  <div class="hero__portrait natan-photo">
-    <video
-      id="natan-video"
-      class="natan-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="/assets/NatanSantoloPhoto.jpg"
-    >
-      <source src="/assets/NatanSantoloVideo.mp4" type="video/mp4" />
-      <img src="/assets/NatanSantoloPhoto.jpg" alt="Natan Santolo" />
-    </video>
-  </div>
 </header>
-<script is:inline src="/assets/js/perspective.js"></script>

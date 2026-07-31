@@ -22,7 +22,7 @@ export const ui = {
     'nav.categories': 'Categories',
     'home.articles': 'Articles',
     'hero.lead':
-      'I help teams design better products — and I write about how design and AI work together, without the hype.',
+      'I help teams design better products and I write about how design and AI work together.',
     'hero.ctaBook': 'Read the book',
     'hero.ctaWriting': 'Browse writing',
     'home.aboutEyebrow': 'About',
@@ -60,7 +60,7 @@ export const ui = {
     'nav.categories': 'Categorías',
     'home.articles': 'Artículos',
     'hero.lead':
-      'Ayudo a los equipos a diseñar mejores productos — y escribo sobre cómo el diseño y la IA trabajan juntos, sin la exageración.',
+      'Ayudo a los equipos a diseñar mejores productos y escribo sobre cómo el diseño y la IA trabajan juntos.',
     'hero.ctaBook': 'Leer el libro',
     'hero.ctaWriting': 'Ver escritos',
     'home.aboutEyebrow': 'Sobre mí',

@@ -21,7 +21,19 @@ const isBook = path.includes(`/${sections.book[lang]}`);
 <nav class="site-nav" id="top" aria-label="Primary">
   <div class="site-nav__inner">
     <a class="brand" href={homeUrl(lang)}>
-      <span class="brand__mark" aria-hidden="true">NS</span>
+      <span class="brand__mark" aria-hidden="true">
+        <video
+          class="brand__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="/assets/NatanSantoloPhoto.jpg"
+        >
+          <source src="/assets/NatanSantoloVideo.mp4" type="video/mp4" />
+          <img src="/assets/NatanSantoloPhoto.jpg" alt="" />
+        </video>
+      </span>
       <span class="brand__name">Natan Santolo</span>
     </a>
 

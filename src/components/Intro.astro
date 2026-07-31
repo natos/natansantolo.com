@@ -4,54 +4,54 @@ const lang = getLangFromUrl(Astro.url);
 const book = bookUrl(lang);
 ---
 
-<section class="about">
+<section class="intro">
   {
     lang === 'es' ? (
       <>
+        <p>Diseño cosas y, últimamente, también las construyo.</p>
         <p>
-          En la última década, he liderado equipos de diseño y dado forma a productos en mercados
-          globales. Mi trabajo se sitúa en la intersección entre la investigación de usuarios, la
-          estrategia de producto y el cambio organizacional, ayudando a las empresas a tomar mejores
-          decisiones más rápido al entender de verdad a sus usuarios.
+          Una década liderando equipos de diseño me enseñó una cosa: la mayoría de los productos no
+          fracasan porque los píxeles estén mal. Fracasan porque nadie entendió de verdad a las
+          personas que los usan. Así que ese es el trabajo: investigación, estrategia y el desorden
+          del cambio organizacional que hace falta para que una empresa escuche.
         </p>
         <p>
-          Me interesa especialmente cómo el diseño y la IA pueden trabajar juntos sin la
-          exageración. Por eso escribí <a href={book}>El Diseñador Aumentado</a>, un libro para
-          diseñadores que quieren entender cómo la <strong>IA puede amplificar su trabajo</strong>,
-          no reemplazarlo.
+          Últimamente me obsesiona una pregunta más silenciosa: cómo trabajan juntos los diseñadores
+          y la IA una vez que le quitas la exageración. Escribí{' '}
+          <a href={book}>El Diseñador Aumentado</a> justamente sobre eso: la IA como una forma de{' '}
+          <strong>amplificar tu criterio</strong>, no de reemplazarlo.
         </p>
-        <p>En estos días, reparto mi tiempo entre:</p>
-        <ul>
-          <li>
-            Asesorar a diseñadores y fundadores en{' '}
-            <a href="https://adplist.org/mentors/natan-santolo">ADPList</a>
-          </li>
-          <li>Escribir sobre diseño, IA y el futuro del trabajo creativo</li>
-          <li>Trabajar con equipos para construir mejores productos</li>
-        </ul>
+        <p>
+          Y como creo que deberíamos construir lo que desearíamos que existiera, construí{' '}
+          <a target="_blank" href="https://www.grsshppr.org/">Grsshppr</a>, una plataforma de
+          mentoría que le pertenece a la comunidad, no a una gráfica de crecimiento. Ahí es donde
+          asesoro sobre startups, UX, producto y diseño.{' '}
+          <a target="_blank" href="https://www.grsshppr.org/mentor/natan-santolo">Acércate una silla</a>.
+        </p>
+        <p style="opacity: 0.6; font-style: italic;">No existe tal cosa como lo definitivo.</p>
       </>
     ) : (
       <>
+        <p>I design things, and lately I build them too.</p>
         <p>
-          In the last decade, I've led design teams and shaped products across global markets. My
-          work sits at the intersection of user research, product strategy, and organizational
-          change, helping companies make better decisions faster by actually understanding their
-          users.
+          A decade of leading design teams taught me one thing: most products don't fail because the
+          pixels are wrong. They fail because nobody actually understood the people using them. So
+          that's the work, research, strategy, and the messy organizational change it takes to make
+          a company listen.
         </p>
         <p>
-          I'm especially interested in how design and AI can work together without the hype. That's
-          why I wrote <a href={book}>The Augmented Designer</a>, a book for designers who want to
-          understand how <strong>AI can amplify their work</strong>, not replace it.
+          Lately I'm obsessed with a quieter question, how designers and AI work together once you
+          strip away the hype. I wrote <a href={book}>The Augmented Designer</a> about exactly that:
+          AI as a way to <strong>amplify your judgment</strong>, not replace it.
         </p>
-        <p>These days, I split my time between:</p>
-        <ul>
-          <li>
-            Coaching designers and founders on{' '}
-            <a href="https://adplist.org/mentors/natan-santolo">ADPList</a>
-          </li>
-          <li>Writing about design, AI, and the future of creative work</li>
-          <li>Working with teams to build better products</li>
-        </ul>
+        <p>
+          And because I think we should build what we wish existed, I built{' '}
+          <a target="_blank" href="https://www.grsshppr.org/">Grsshppr</a>, a mentoring platform that
+          belongs to the community, not to a growth chart. It's where I coach on startups, UX,
+          product, and design.{' '}
+          <a target="_blank" href="https://www.grsshppr.org/mentor/natan-santolo">Pull up a chair</a>.
+        </p>
+        <p style="opacity: 0.6; font-style: italic;">There's no such thing as final.</p>
       </>
     )
   }
