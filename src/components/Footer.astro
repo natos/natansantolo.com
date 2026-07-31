@@ -1,0 +1,69 @@
+---
+import { getLangFromUrl, useTranslations, homeUrl, bookUrl, localizePath, sections } from '../i18n';
+import Icon from './Icon.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const articles = localizePath(`/${sections.post[lang]}/`, lang);
+const book = bookUrl(lang);
+const feed = lang === 'en' ? '/index.xml' : '/es/index.xml';
+const other = lang === 'en' ? '/es/' : '/';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href={homeUrl(lang)}>
+        <span class="brand__mark" aria-hidden="true">
+          <video
+            class="brand__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="/assets/NatanSantoloPhoto.jpg"
+          >
+            <source src="/assets/NatanSantoloVideo.mp4" type="video/mp4" />
+            <img src="/assets/NatanSantoloPhoto.jpg" alt="" />
+          </video>
+        </span>
+        <span class="brand__name">Natan Santolo</span>
+      </a>
+      <p class="site-footer__tagline">{t('footer.tagline')}</p>
+    </div>
+
+    <nav class="site-footer__col" aria-label={t('footer.explore')}>
+      <h2 class="site-footer__heading">{t('footer.explore')}</h2>
+      <ul>
+        <li><a href={articles}>{t('nav.articles')}</a></li>
+        <li><a href={book}>{t('nav.book')}</a></li>
+        <li><a href={feed}>{t('footer.rss')}</a></li>
+      </ul>
+    </nav>
+
+    <nav class="site-footer__col" aria-label={t('footer.elsewhere')}>
+      <h2 class="site-footer__heading">{t('footer.elsewhere')}</h2>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/natansantolo" target="_blank" rel="noopener">
+            <Icon name="linkedin" /> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://www.grsshppr.org/" target="_blank" rel="noopener">
+            Grsshppr
+          </a>
+        </li>
+        <li><a href={other} lang={lang === 'en' ? 'es' : 'en'}>{t('lang.switch')}</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="site-footer__bar">
+    <p class="site-footer__copy">
+      © {year} Natan Santolo · {t('footer.rights')}
+    </p>
+    <a class="site-footer__top" href="#top">{t('footer.top')} ↑</a>
+  </div>
+</footer>

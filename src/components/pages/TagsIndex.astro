@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleListItem from '../ArticleListItem.astro';
+import Icon from '../Icon.astro';
+import { getTags, tagSlug } from '../../lib/content';
+import { useTranslations, tagUrl, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath?: string;
+}
+const { lang, altPath } = Astro.props;
+const t = useTranslations(lang);
+const tags = await getTags(lang);
+// Resolve each group's display name (original casing/accents) and sort by count desc.
+const entries = [...tags.entries()]
+  .map(([slug, posts]) => ({
+    slug,
+    posts,
+    display: posts.flatMap((p) => p.data.tags).find((x) => tagSlug(x) === slug) ?? slug,
+  }))
+  .sort((a, b) => b.posts.length - a.posts.length);
+---
+
+<BaseLayout title="Tags" altPath={altPath}>
+  <main class="wrap articles-by-tags">
+    {
+      entries.map(({ slug, posts, display }) => (
+        <>
+          <h1>
+            <a href={tagUrl(lang, slug)}>{display}</a>
+          </h1>
+          <section class="articles">
+            {posts.slice(0, 3).map((post) => (
+              <ArticleListItem post={post} lang={lang} />
+            ))}
+            {posts.length > 1 && (
+              <p class="more">
+                <a href={tagUrl(lang, slug)}>
+                  {posts.length} {t('tags.more')} <strong>{display}</strong>{' '}
+                  <Icon name="caret-right" />
+                </a>
+              </p>
+            )}
+          </section>
+        </>
+      ))
+    }
+  </main>
+</BaseLayout>

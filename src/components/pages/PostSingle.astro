@@ -1,0 +1,98 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../ReadingProgress.astro';
+import Icon from '../Icon.astro';
+import type { Post } from '../../lib/content';
+import { postYear, readingTime, tagSlug } from '../../lib/content';
+import { useTranslations, postUrl, tagUrl, type Lang } from '../../i18n';
+
+interface Props {
+  post: Post;
+  lang: Lang;
+  altPath?: string;
+  alternates?: Partial<Record<Lang, string>>;
+  prev?: Post;
+  next?: Post;
+}
+const { post, lang, altPath, alternates, prev, next } = Astro.props;
+const t = useTranslations(lang);
+const { Content } = await render(post);
+const { title, description, href, image, caption, date, tags } = post.data;
+const locale = lang === 'es' ? 'es-ES' : 'en-US';
+const dateLabel = date.toLocaleDateString(locale, {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+const dateTime = date.toISOString().slice(0, 10);
+const minutes = readingTime(post);
+const readLabel = lang === 'es' ? 'min de lectura' : 'min read';
+const ogImage = `/og/${lang}/${postYear(post)}/${post.data.slug}.png`;
+---
+
+<BaseLayout title={title} description={description} altPath={altPath} {alternates} {ogImage}>
+  <ReadingProgress />
+  <main class="wrap">
+    <article class="article">
+      <header>
+        {
+          href ? (
+            <h1>
+              <a href={href} title={title} target="_blank" rel="noopener">
+                {title}
+              </a>
+            </h1>
+          ) : (
+            <h1>{title}</h1>
+          )
+        }
+        <p class="post-meta">
+          <time datetime={dateTime}>{dateLabel}</time>
+          <span class="post-meta__dot" aria-hidden="true">·</span>
+          <span>{minutes} {readLabel}</span>
+        </p>
+        {description && <p class="lead">{description}</p>}
+      </header>
+      {
+        href && image && (
+          <figure>
+            <a href={href} target="_blank" rel="noopener">
+              <img src={image} alt={caption ?? ''} />
+            </a>
+          </figure>
+        )
+      }
+      <div class="content"><Content /></div>
+      {
+        tags && tags.length > 0 && (
+          <ul class="tag-list">
+            {tags.map((tag) => (
+              <li>
+                <a class="tag-pill" href={tagUrl(lang, tagSlug(tag))}>
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </article>
+    <nav class="pagination">
+      {
+        prev && (
+          <a href={postUrl(lang, postYear(prev), prev.data.slug)}>
+            <Icon name="arrow-left" /> {t('post.prev')}
+          </a>
+        )
+      }
+      {
+        next && (
+          <a href={postUrl(lang, postYear(next), next.data.slug)}>
+            {t('post.next')} <Icon name="arrow-right" />
+          </a>
+        )
+      }
+    </nav>
+  </main>
+</BaseLayout>

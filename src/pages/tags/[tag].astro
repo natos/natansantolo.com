@@ -1,0 +1,23 @@
+---
+import TagPage from '../../components/pages/TagPage.astro';
+import { getTags, tagSlug, counterpartTagUrl } from '../../lib/content';
+import { tagUrl, localizePath } from '../../i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const tags = await getTags('en');
+  return [...tags.entries()].map(([slug, posts]) => {
+    const display = posts[0]?.data.tags.find((x) => tagSlug(x) === slug) ?? slug;
+    return { params: { tag: slug }, props: { tag: display, posts } };
+  });
+}) satisfies GetStaticPaths;
+
+const { tag, posts } = Astro.props;
+const { tag: slug } = Astro.params;
+const altPath = await counterpartTagUrl(slug, 'es');
+// Only emit an hreflang alternate when a real counterpart tag exists (not the index fallback).
+const hasCounterpart = altPath !== localizePath('/tags/', 'es');
+const alternates = hasCounterpart ? { en: tagUrl('en', slug), es: altPath } : undefined;
+---
+
+<TagPage lang="en" {tag} {posts} {altPath} {alternates} />

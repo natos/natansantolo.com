@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, bookUrl } from '../i18n';
+const lang = getLangFromUrl(Astro.url);
+const book = bookUrl(lang);
+---
+
+<section class="intro">
+  {
+    lang === 'es' ? (
+      <>
+        <p>Diseño cosas y, últimamente, también las construyo.</p>
+        <p>
+          Una década liderando equipos de diseño me enseñó una cosa: la mayoría de los productos no
+          fracasan porque los píxeles estén mal. Fracasan porque nadie entendió de verdad a las
+          personas que los usan. Así que ese es el trabajo: investigación, estrategia y el desorden
+          del cambio organizacional que hace falta para que una empresa escuche.
+        </p>
+        <p>
+          Últimamente me obsesiona una pregunta más silenciosa: cómo trabajan juntos los diseñadores
+          y la IA una vez que le quitas la exageración. Escribí{' '}
+          <a href={book}>El Diseñador Aumentado</a> justamente sobre eso: la IA como una forma de{' '}
+          <strong>amplificar tu criterio</strong>, no de reemplazarlo.
+        </p>
+        <p>
+          Y como creo que deberíamos construir lo que desearíamos que existiera, construí{' '}
+          <a target="_blank" href="https://www.grsshppr.org/">Grsshppr</a>, una plataforma de
+          mentoría que le pertenece a la comunidad, no a una gráfica de crecimiento. Ahí es donde
+          asesoro sobre startups, UX, producto y diseño.{' '}
+          <a target="_blank" href="https://www.grsshppr.org/mentor/natan-santolo">Acércate una silla</a>.
+        </p>
+        <p style="opacity: 0.6; font-style: italic;">No existe tal cosa como lo definitivo.</p>
+      </>
+    ) : (
+      <>
+        <p>I design things, and lately I build them too.</p>
+        <p>
+          A decade of leading design teams taught me one thing: most products don't fail because the
+          pixels are wrong. They fail because nobody actually understood the people using them. So
+          that's the work, research, strategy, and the messy organizational change it takes to make
+          a company listen.
+        </p>
+        <p>
+          Lately I'm obsessed with a quieter question, how designers and AI work together once you
+          strip away the hype. I wrote <a href={book}>The Augmented Designer</a> about exactly that:
+          AI as a way to <strong>amplify your judgment</strong>, not replace it.
+        </p>
+        <p>
+          And because I think we should build what we wish existed, I built{' '}
+          <a target="_blank" href="https://www.grsshppr.org/">Grsshppr</a>, a mentoring platform that
+          belongs to the community, not to a growth chart. It's where I coach on startups, UX,
+          product, and design.{' '}
+          <a target="_blank" href="https://www.grsshppr.org/mentor/natan-santolo">Pull up a chair</a>.
+        </p>
+        <p style="opacity: 0.6; font-style: italic;">There's no such thing as final.</p>
+      </>
+    )
+  }
+</section>

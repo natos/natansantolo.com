@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleListItem from '../ArticleListItem.astro';
+import { getPosts } from '../../lib/content';
+import { useTranslations, type Lang, localizePath, sections } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath: string;
+}
+const { lang, altPath } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPosts(lang);
+const alternates = {
+  en: `/${sections.post.en}/`,
+  es: localizePath(`/${sections.post.es}/`, 'es'),
+};
+---
+
+<BaseLayout title={t('nav.articles')} altPath={altPath} alternates={alternates}>
+  <section class="wrap articles">
+    {posts.map((post) => <ArticleListItem post={post} lang={lang} />)}
+  </section>
+</BaseLayout>

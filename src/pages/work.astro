@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Work';
+const description = '“Create what you wish existed”';
+const VIDEO = 'https://work.natansantolo.com';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="wrap work">
+    <header class="work-hero" data-reveal>
+      <p class="eyebrow">Selected work</p>
+      <h1 class="work-hero__title">Work</h1>
+      <p class="lead work-hero__lead">“Create what you wish existed”</p>
+      <p class="work-hero__note">
+        These are a few snapshots of selected work. Portfolio is available upon request.
+      </p>
+    </header>
+
+    <section class="work-project" data-reveal>
+      <h2 class="work-project__title">Cochacha</h2>
+      <p class="work-project__desc">
+        A webapp for fitness coaches to share programs and keep track of their client's progress.
+      </p>
+      <div class="work-grid work-grid--3">
+        <figure class="work-media">
+          <img src="/assets/work/cochacha-logbook.png" alt="Cochacha logbook" loading="lazy" />
+        </figure>
+        <figure class="work-media">
+          <img src="/assets/work/cochacha-programs.png" alt="Cochacha programs" loading="lazy" />
+        </figure>
+        <figure class="work-media">
+          <img src="/assets/work/cochacha-analytics.png" alt="Cochacha analytics" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="work-project" data-reveal>
+      <h2 class="work-project__title">Agentic AI Governance: AIX</h2>
+      <p class="work-project__desc">
+        A design vision for Affinidi Agentic AI Governance and Monitoring tool that is currently
+        under development.
+      </p>
+      <div class="work-grid work-grid--1">
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/affinidi-aix.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+      </div>
+    </section>
+
+    <section class="work-project" data-reveal>
+      <h2 class="work-project__title">Ayra Cards</h2>
+      <p class="work-project__desc">
+        A mobile App and a Verifier Website as demo for{' '}
+        <a href="https://ayra.forum/whitepapers/" target="_blank" rel="noopener">Ayra Cards</a> for
+        digital trust interactions across multiple domains.
+      </p>
+
+      <p class="work-project__label">Mobile App</p>
+      <div class="work-grid work-grid--3">
+        <figure class="work-media">
+          <img src="/assets/work/ayra-cards-demo.png" alt="Ayra Cards demo" loading="lazy" />
+        </figure>
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/ayra-cards-lo-fi.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/ayra-cards-hi-fi.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+      </div>
+
+      <p class="work-project__label">Website</p>
+      <div class="work-grid work-grid--1">
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/ayra-cards-verifiers.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+      </div>
+    </section>
+
+    <section class="work-project" data-reveal>
+      <h2 class="work-project__title">Affinidi Identity Wallets</h2>
+      <p class="work-project__desc">Different decentralized identity wallets.</p>
+      <div class="work-grid work-grid--3">
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/affinidi-asa-concept.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/infinidi-gaming-wallet.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="work-media">
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/affinidi-vault-ai-agents.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+      </div>
+    </section>
+
+    <section class="work-project" data-reveal>
+      <h2 class="work-project__title">AirAsia Super App</h2>
+      <p class="work-project__desc">The first version for AirAsia Super App.</p>
+      <div class="work-grid work-grid--2">
+        <figure class="work-media work-media--stack">
+          <figcaption class="work-media__caption">
+            <strong>Personas Mapping</strong>
+            Based on user interviews and behavioural data analysis.
+          </figcaption>
+          <video class="work-video" muted loop playsinline preload="metadata">
+            <source src={`${VIDEO}/airasia-personas.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="work-media work-media--stack">
+          <figcaption class="work-media__caption">
+            <strong>Design Vision</strong>
+            First design vision for AirAsia Super App (today AirAsia Move).
+          </figcaption>
+          <img src="/assets/work/airasia-superaapp.png" alt="AirAsia Super App" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  // Play project videos only while they're on screen; pause off-screen.
+  // Keeps many clips from downloading/decoding at once and avoids scroll jank.
+  (function () {
+    var vids = Array.prototype.slice.call(document.querySelectorAll('.work-video'));
+    if (!vids.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) {
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    vids.forEach(function (v) {
+      io.observe(v);
+    });
+  })();
+</script>
+
+<style>
+  .work {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-9);
+  }
+
+  .work-hero {
+    margin-bottom: var(--space-section);
+  }
+  .work-hero__title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--fs-800);
+  }
+  .work-hero__lead {
+    margin-bottom: var(--space-3);
+  }
+  .work-hero__note {
+    color: var(--color-text-muted);
+    max-width: 52ch;
+  }
+
+  .work-project {
+    margin-top: var(--space-section);
+  }
+  .work-project__title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--fs-600);
+  }
+  .work-project__desc {
+    color: var(--color-text-muted);
+    max-width: 60ch;
+    margin-bottom: var(--space-5);
+  }
+  .work-project__label {
+    margin: var(--space-6) 0 var(--space-3);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+
+  .work-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .work-grid--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .work-grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .work-media {
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+  .work-media img,
+  .work-media video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .work-media--stack {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+  }
+  .work-media--stack video,
+  .work-media--stack img {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .work-media__caption {
+    margin-bottom: var(--space-3);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+  .work-media__caption strong {
+    display: block;
+    color: var(--color-heading);
+    font-family: var(--font-serif);
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+// Thin fixed progress bar that tracks vertical scroll on long-form pages.
+// Purely decorative → aria-hidden. Respects reduced-motion via the bar's
+// short transition being non-essential.
+---
+
+<div class="reading-progress" aria-hidden="true">
+  <div class="reading-progress__bar" id="reading-progress-bar"></div>
+</div>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('reading-progress-bar');
+    if (!bar) return;
+    function update() {
+      var el = document.documentElement;
+      var max = el.scrollHeight - el.clientHeight;
+      var pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    document.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>

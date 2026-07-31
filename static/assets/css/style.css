@@ -30,7 +30,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;    /* For Firefox on macOS */
   text-rendering: optimizeLegibility;    /* Improves kerning and ligatures */
-  background-color: #ffc000;
+  background-color: var(--color-bg);
 }
 
 body::before {
@@ -39,13 +39,13 @@ body::before {
   z-index: -1;
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
-  /* Multiple gradients for depth, now with darker yellows */
-  background: 
-    radial-gradient(circle at 20% 30%, #ffb300 0%, transparent 70%),
-    radial-gradient(circle at 80% 70%, #e6a100 0%, transparent 80%),
-    radial-gradient(circle at 60% 20%, #ffd54d 0%, transparent 80%),
-    radial-gradient(circle at 40% 80%, #cc8c00 0%, transparent 80%);
-  opacity: 0.7;
+  /* Subtle warm glow — amber as ambient accent, not the whole canvas */
+  background:
+    radial-gradient(circle at 20% 30%, var(--amber-300) 0%, transparent 70%),
+    radial-gradient(circle at 80% 70%, var(--amber-500) 0%, transparent 80%),
+    radial-gradient(circle at 60% 20%, var(--amber-200) 0%, transparent 80%),
+    radial-gradient(circle at 40% 80%, var(--amber-600) 0%, transparent 80%);
+  opacity: var(--glow-opacity);
   animation: bgMove 18s linear infinite;
 }
 
@@ -73,70 +73,7 @@ body::before {
   }
 }
 
-/* --- Headers --- */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  margin-bottom: 1em;
-  letter-spacing: 0.01em;
-  overflow-wrap: break-word;
-  text-wrap: balance;
-}
-
-h1 {
-  margin-bottom: 1.5em;
-  max-width: 18ch;
-}
-h2 {
-  margin-bottom: 1em;
-  max-width: 28ch;
-}
-h3, h4, h5, h6 {
-  margin-bottom: 0.75em;
-  max-width: 32ch;
-}
-
-/* --- Paragraphs --- */
-p {
-  max-width: 65ch;
-  margin-bottom: 1.5em;
-  text-wrap: pretty;
-  overflow-wrap: break-word;
-}
-
-/* --- Lists --- */
-ul, ol {
-  padding-left: 2em;
-  margin-bottom: 1.5em;
-  max-width: 65ch;
-}
-
-li {
-  margin-bottom: 0.5em;
-  overflow-wrap: break-word;
-}
-
-/* --- Redability Hakcs --- */
-
-h1, h2, h3, h4, h5, h6 {
-  text-shadow: #ffd54d 0px 0px 2px, #6e4b00 0px 0px 3px;
-  letter-spacing: -.0125em;
-}
-a, p, li, small, time, code, pre,  blockquote, td, th, caption, summary, label {
-  text-shadow: #ffd54d 0px 0px 1px, #6e4b00 0px 0px 2px;
-}
-
-time {
-  letter-spacing: -0.05em;;
-}
-
-@media screen and (max-width: 640px) {
-  h1 {
-    margin-bottom: 1em;
-  }
-}
-
-
-/* 5. Improve media defaults */
+/* Media defaults & embeds (typography now lives in base.css) */
 img,
 picture,
 video,
@@ -146,95 +83,23 @@ svg {
   max-width: 100%;
 }
 
-/* 6. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-h1 {
-  margin-bottom: 55px;
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 24px;
-}
-p {
-  margin-bottom: 32px;
-}
-small {
-  font-size: 16px;
-}
-
 iframe {
-  margin-bottom: 32px;
-}
-footer {
-  text-align: left;
-  padding-bottom: 2rem;
-}
-
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  text-decoration: none;;
-}
-a {
-  color: #333;
-  transition: all 0.5s ease;
-}
-a:visited { color: #333; }
-a:hover {
-  text-decoration: underline;
+  margin-bottom: var(--space-6);
 }
 
 .wrap {
-  width: 90%;
-  max-width: 68ch;
-  /* max-width: 860px; */
-  margin: 0 auto;
-  padding-top: 3rem;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 2rem);
 }
 
-header {
-  margin-bottom: 5rem;
+/* Pages whose <main> is the reading column get breathing room under the nav. */
+main.wrap {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-9);
 }
 
-header h1 {
-  margin-bottom: 1rem;
-}
-header h1 + h3 {
- margin-top: 0;
-}
-
-.natan-video {
-  border-radius: 100%;
-}
-.natan-photo {
-  width: 25%;
-  height: 25%;
-  float: right;
-  border: 0.5rem solid #ffffff;
-  padding: 0.25rem;
-  border-radius: 100%;
-  /* transition: all ease-in 0.2s; */
-  transition: transform 0.2s cubic-bezier(.4,2,.6,1);
-  will-change: transform;
-  /* Use CSS variables for X and Y rotation */
-  transform: perspective(600px)
-    rotateX(var(--photo-rotate-x, 0deg))
-    rotateY(var(--photo-rotate-y, 0deg));
-}
-
-@media screen and (max-width: 640px) {
-  .natan-photo {
-    width: 50%;
-    float: none;
-  }
-}
 #arcade {
   position: relative;
   width: 643px;
@@ -261,19 +126,10 @@ header h1 + h3 {
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 8px rgba(255, 225, 0, 0.5);
-  }
-  0% {
-    box-shadow: 0 0 12px rgba(255, 225, 0, 0.5);
-  }
-  0% {
-    box-shadow: 0 0 6px rgba(255, 225, 0, 0.5);
-  }
-  0% {
-    box-shadow: 0 0 12px rgba(255, 225, 0, 0.5);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
   }
   100% {
-    box-shadow: 0 0 9px rgba(255, 225, 0, 0.5);
+    box-shadow: 0 0 9px rgba(255, 255, 255, 1);
   }
 }
 
@@ -364,6 +220,613 @@ header h1 + h3 {
   }
 }
 
-.posts {
-  margin-top: 4rem;
+/* =========================================================
+   Theme toggle (light/dark)
+   ========================================================= */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  margin-left: var(--space-3);
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  vertical-align: middle;
+  transition: color var(--dur-fast) var(--ease-standard),
+    background-color var(--dur-fast) var(--ease-standard);
+}
+.theme-toggle:hover {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+.theme-toggle__icon {
+  display: none;
+}
+/* Light is the default effective theme → show the moon (switch-to-dark). */
+.theme-toggle__icon--moon {
+  display: block;
+}
+/* Explicit dark → show the sun. */
+:root[data-theme="dark"] .theme-toggle__icon--moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle__icon--sun {
+  display: block;
+}
+/* OS dark and not explicitly overridden to light → show the sun. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__icon--moon {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .theme-toggle__icon--sun {
+    display: block;
+  }
+}
+/* Explicit light wins over OS dark → keep the moon. */
+:root[data-theme="light"] .theme-toggle__icon--moon {
+  display: block;
+}
+:root[data-theme="light"] .theme-toggle__icon--sun {
+  display: none;
+}
+
+/* =========================================================
+   Phase 5 — Component polish
+   ========================================================= */
+
+/* =========================================================
+   Site navigation — full-bleed sticky bar with brand,
+   links, and right-aligned utilities.
+   ========================================================= */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-nav__inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-3) clamp(1rem, 5vw, 2rem);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+/* Brand: monogram mark + wordmark */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--color-heading);
+  font-weight: 700;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+.brand__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.brand__name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-300);
+  letter-spacing: -0.01em;
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+.site-nav__link {
+  position: relative;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--fs-100);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding-block: var(--space-2);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+.site-nav__link:hover {
+  color: var(--color-heading);
+  text-decoration: none;
+}
+.site-nav__link.is-active {
+  color: var(--color-heading);
+}
+.site-nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+
+.site-nav__utils {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: auto;
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--color-border);
+}
+
+@media (max-width: 640px) {
+  .site-nav__inner {
+    gap: var(--space-4);
+  }
+  .brand__name {
+    display: none;
+  }
+  .site-nav__links {
+    gap: var(--space-4);
+  }
+  .site-nav__utils {
+    gap: var(--space-3);
+    padding-left: var(--space-3);
+  }
+}
+
+/* =========================================================
+   Eyebrow label — small amber-dot section marker.
+   ========================================================= */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-100);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+.eyebrow--on-accent {
+  color: color-mix(in srgb, var(--color-accent-contrast) 70%, transparent);
+}
+.eyebrow--on-accent::before {
+  background: var(--color-accent-contrast);
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: var(--color-accent-contrast);
+  text-decoration: none;
+}
+.btn-primary span {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.btn-primary:hover span {
+  transform: translateX(4px);
+}
+.btn-primary--invert {
+  background: var(--color-accent-contrast);
+  color: var(--color-accent);
+}
+.btn-primary--invert:hover {
+  color: var(--color-accent);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-heading);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--dur-fast) var(--ease-standard),
+    background var(--dur-fast) var(--ease-standard);
+}
+.btn-ghost:hover {
+  text-decoration: none;
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+/* =========================================================
+   Homepage sections
+   ========================================================= */
+.home > .section {
+  margin-top: var(--space-section);
+}
+.home > .wrap:first-child {
+  padding-top: var(--space-8);
+}
+.section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.section__title {
+  margin: 0;
+}
+.section__more {
+  flex: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-100);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.section__more span {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.section__more:hover {
+  color: var(--color-link-hover);
+  text-decoration: none;
+}
+.section__more:hover span {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+.hero__name {
+  margin: 0 0 var(--space-4);
+  font-size: var(--fs-800);
+}
+.hero__lead {
+  margin-bottom: var(--space-5);
+  max-width: 46ch;
+}
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* =========================================================
+   Book promo band — full-bleed tinted strip.
+   ========================================================= */
+.book-band {
+  margin-top: var(--space-section);
+  padding-block: var(--space-8);
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+  border-block: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+}
+.book-band__inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 2rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+@media (min-width: 640px) {
+  .book-band__inner {
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-7);
+  }
+}
+.book-band__cover img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+.book-band__title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-600);
+}
+.book-band__text {
+  margin: 0 0 var(--space-5);
+  color: var(--color-text);
+}
+
+/* =========================================================
+   Playground
+   ========================================================= */
+.playground .only-desktop {
+  margin-top: 0;
+}
+
+/* =========================================================
+   Site footer — three columns + a bottom bar.
+   ========================================================= */
+.site-footer {
+  margin-top: var(--space-section);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.site-footer__inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-8) clamp(1rem, 5vw, 2rem) var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+@media (min-width: 640px) {
+  .site-footer__inner {
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: var(--space-7);
+  }
+}
+.site-footer__tagline {
+  margin: var(--space-4) 0 0;
+  max-width: 34ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-100);
+}
+.site-footer__heading {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-100);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.site-footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.site-footer__col a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--fs-200);
+}
+.site-footer__col a:hover {
+  color: var(--color-link-hover);
+}
+.site-footer__bar {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-4) clamp(1rem, 5vw, 2rem) var(--space-7);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.site-footer__copy {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-100);
+}
+.site-footer__top {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--fs-100);
+  font-weight: 700;
+}
+.site-footer__top:hover {
+  color: var(--color-link-hover);
+}
+
+/* Article cards */
+.articles {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-med) var(--ease-standard),
+    box-shadow var(--dur-med) var(--ease-standard),
+    border-color var(--dur-med) var(--ease-standard);
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+}
+
+/* Featured (lead) article gets a larger title. */
+.card--featured {
+  padding: var(--space-6) var(--space-7);
+}
+.card--featured .card__meta::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+.card--featured .card__title {
+  font-size: var(--fs-600);
+  max-width: 24ch;
+}
+.card--featured .card__excerpt {
+  font-size: var(--fs-300);
+  color: var(--color-text);
+}
+
+.card__meta,
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: none;
+  font-size: var(--fs-100);
+  color: var(--color-text-muted);
+}
+.card__meta {
+  margin: 0 0 var(--space-2);
+}
+.card__dot,
+.post-meta__dot {
+  color: var(--color-accent);
+}
+.card__title {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+.card__excerpt {
+  margin-bottom: var(--space-3);
+  color: var(--color-text-muted);
+}
+.card__more {
+  font-size: var(--fs-100);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-link-hover);
+  text-decoration: none;
+}
+.card__more span {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.card__more:hover span {
+  transform: translateX(4px);
+}
+
+/* Post metadata row */
+.post-meta {
+  margin: 0 0 var(--space-5);
+}
+
+/* Tag pills */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  max-width: none;
+  margin: var(--space-7) 0 0;
+  padding: var(--space-5) 0 0;
+  border-top: 1px solid var(--color-border);
+}
+.tag-list li {
+  margin: 0;
+}
+.tag-pill {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--fs-100);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard),
+    background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+.tag-pill:hover {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* =========================================================
+   Phase 6 — Motion & interaction
+   ========================================================= */
+
+/* Reading-progress bar (long-form pages) */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 30;
+  background: transparent;
+  pointer-events: none;
+}
+.reading-progress__bar {
+  width: 0;
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 80ms linear;
+}
+
+/* Scroll-reveal — only active when JS opts in AND motion is allowed.
+   Default (no-JS / reduced-motion) leaves everything fully visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .card,
+  .js-reveal [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--dur-slow) var(--ease-standard),
+      transform var(--dur-slow) var(--ease-standard);
+  }
+  .js-reveal .card.is-visible,
+  .js-reveal [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }

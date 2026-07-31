@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Base path of the list (page 1), e.g. "/" or "/es/". Numbered pages append N/. */
+  base: string;
+  /** Astro paginate() page object */
+  page: {
+    url: { prev?: string; next?: string; current: string };
+    currentPage: number;
+    lastPage: number;
+  };
+}
+const { page, base } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const numbers = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const numberUrl = (n: number) => (n === 1 ? base : `${base}${n}/`);
+---
+
+{
+  page.lastPage > 1 && (
+    <nav class="pagination" role="navigation">
+      <ol class="pagination">
+        {page.url.prev && (
+          <li>
+            <a href={page.url.prev}>
+              <Icon name="arrow-left" /> {t('pagination.newer')}
+            </a>
+          </li>
+        )}
+        {numbers.map((n) => (
+          <li class={n === page.currentPage ? 'active' : undefined}>
+            <a href={numberUrl(n)}>{n}</a>
+          </li>
+        ))}
+        {page.url.next && (
+          <li>
+            <a href={page.url.next}>
+              {t('pagination.older')} <Icon name="arrow-right" />
+            </a>
+          </li>
+        )}
+      </ol>
+    </nav>
+  )
+}

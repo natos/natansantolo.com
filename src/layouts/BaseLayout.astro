@@ -1,0 +1,61 @@
+---
+import Meta from '../components/Meta.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import { getLangFromUrl } from '../i18n';
+import type { Lang } from '../i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  alternates?: Partial<Record<Lang, string>>;
+  extraStyles?: string[];
+  /** Equivalent path in the other language, for the nav language switcher. */
+  altPath?: string;
+  /** Per-page Open Graph image path. */
+  ogImage?: string;
+}
+
+const { title, description, alternates, extraStyles, altPath, ogImage } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <Meta {title} {description} {alternates} {extraStyles} {ogImage} />
+  </head>
+  <body>
+    <Navigation {altPath} />
+    <slot />
+    <Footer />
+    <Analytics />
+    <script is:inline>
+      // Scroll-reveal: fade/slide elements in as they enter the viewport.
+      // JS-gated (adds .js-reveal) so no-JS users always see content, and
+      // skipped entirely when the user prefers reduced motion.
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) return;
+        var targets = document.querySelectorAll('.card, [data-reveal]');
+        if (!targets.length) return;
+        document.documentElement.classList.add('js-reveal');
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>

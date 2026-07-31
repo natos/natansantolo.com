@@ -1,0 +1,165 @@
+/* =========================================================
+   Design Tokens — single source of truth
+   ---------------------------------------------------------
+   Layer 1: primitives (raw values, brand-agnostic)
+   Layer 2: semantic roles (what a value is *for*)
+   Components should reference ONLY semantic tokens.
+   ========================================================= */
+
+:root {
+  /* -----------------------------------------------------
+     Layer 1 — PRIMITIVES
+     ----------------------------------------------------- */
+
+  /* Brand: warm amber ramp */
+  --amber-100: #fff4d6;
+  --amber-200: #ffe4a3;
+  --amber-300: #ffd54d;
+  --amber-400: #ffc000;
+  --amber-500: #e8a13a;
+  --amber-600: #cc8c00;
+  --amber-700: #a06a00;
+
+  /* Neutrals: warm "ink" (dark) ramp */
+  --ink-900: #1a1a1a;
+  --ink-800: #222222;
+  --ink-700: #333333;
+  --ink-600: #555555;
+  --ink-500: #767676;
+  --ink-400: #9a9a9a;
+
+  /* Neutrals: "paper" (light) ramp */
+  --paper-000: #ffffff;
+  --paper-100: #faf7f0;
+  --paper-200: #f2ede1;
+  --paper-300: #e6ddc9;
+
+  /* Feedback */
+  --blue-500: #0077ff;
+  --blue-600: #005fcc;
+
+  /* -----------------------------------------------------
+     Spacing — 8px-based modular scale
+     (0.25rem = 4px; everything snaps to this)
+     ----------------------------------------------------- */
+  --space-1: 0.25rem;  /*  4px */
+  --space-2: 0.5rem;   /*  8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 6rem;     /* 96px */
+  --space-10: 8rem;    /* 128px */
+
+  /* -----------------------------------------------------
+     Type scale — fluid modular scale (~1.25 ratio)
+     ----------------------------------------------------- */
+  --fs-100: 0.875rem;                                   /* small       */
+  --fs-200: 1rem;                                       /* body        */
+  --fs-300: clamp(1.1rem, 1.05rem + 0.3vw, 1.25rem);    /* lead / h6   */
+  --fs-400: clamp(1.25rem, 1.15rem + 0.6vw, 1.6rem);    /* h5 / h4     */
+  --fs-500: clamp(1.6rem, 1.4rem + 1vw, 2.25rem);       /* h3          */
+  --fs-600: clamp(2rem, 1.6rem + 2vw, 3.25rem);         /* h2          */
+  --fs-700: clamp(2.6rem, 2rem + 3vw, 4.75rem);         /* h1          */
+  --fs-800: clamp(3.2rem, 2.4rem + 4vw, 6.5rem);        /* display     */
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.7;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.03em;
+
+  /* Font families */
+  --font-serif: "Merriweather", "Georgia", "Times New Roman", Times, serif;
+  --font-sans: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
+
+  /* -----------------------------------------------------
+     Radii / shadows / motion / layout
+     ----------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12), 0 16px 48px rgba(0, 0, 0, 0.14);
+
+  --dur-fast: 150ms;
+  --dur-med: 300ms;
+  --dur-slow: 500ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.4, 2, 0.6, 1);
+
+  --measure: 66ch;       /* ideal reading width */
+  --container: 68ch;     /* page content width  */
+  --space-section: clamp(4rem, 8vw, 7rem); /* vertical gap between page sections */
+
+  /* -----------------------------------------------------
+     Layer 2 — SEMANTIC ROLES (light theme = default)
+     Amber is now an ACCENT over a warm "paper" canvas —
+     restraint + contrast reads as more professional while
+     keeping the brand warmth.
+     ----------------------------------------------------- */
+  --color-bg: var(--paper-100);
+  --color-surface: var(--paper-000);
+  --color-text: var(--ink-800);
+  --color-text-muted: var(--ink-600);
+  --color-heading: var(--ink-900);
+  --color-border: var(--paper-300);
+  --color-accent: var(--amber-500);
+  --color-accent-contrast: var(--ink-900);
+  --color-link: var(--ink-900);
+  --color-link-hover: var(--amber-600);
+  --color-code-bg: var(--paper-200);
+  --color-focus: var(--blue-500);
+  /* Ambient glow tint used by the animated background */
+  --glow-opacity: 0.14;
+}
+
+/* =========================================================
+   Dark theme — re-points ONLY semantic roles.
+   This is the payoff of the two-layer token model: no
+   component CSS changes, just new values for the roles.
+
+   Applies when the OS prefers dark AND the user hasn't
+   explicitly chosen light, OR when [data-theme="dark"] is set.
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #16150f;
+    --color-surface: #201f18;
+    --color-text: #e9e4d9;
+    --color-text-muted: #b3aa98;
+    --color-heading: #f5f1e8;
+    --color-border: #3a382f;
+    --color-accent: var(--amber-400);
+    --color-accent-contrast: var(--ink-900);
+    --color-link: #f0ebe0;
+    --color-link-hover: var(--amber-300);
+    --color-code-bg: #201f18;
+    --glow-opacity: 0.1;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #16150f;
+  --color-surface: #201f18;
+  --color-text: #e9e4d9;
+  --color-text-muted: #b3aa98;
+  --color-heading: #f5f1e8;
+  --color-border: #3a382f;
+  --color-accent: var(--amber-400);
+  --color-accent-contrast: var(--ink-900);
+  --color-link: #f0ebe0;
+  --color-link-hover: var(--amber-300);
+  --color-code-bg: #201f18;
+  --glow-opacity: 0.1;
+}

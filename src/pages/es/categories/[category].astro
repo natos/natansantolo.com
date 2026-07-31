@@ -1,0 +1,22 @@
+---
+import CategoryPage from '../../../components/pages/CategoryPage.astro';
+import { getCategories, tagSlug, counterpartCategoryUrl } from '../../../lib/content';
+import { categoryUrl, localizePath } from '../../../i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const categories = await getCategories('es');
+  return [...categories.entries()].map(([slug, posts]) => {
+    const display = posts[0]?.data.categories.find((x) => tagSlug(x) === slug) ?? slug;
+    return { params: { category: slug }, props: { category: display, posts } };
+  });
+}) satisfies GetStaticPaths;
+
+const { category, posts } = Astro.props;
+const { category: slug } = Astro.params;
+const altPath = await counterpartCategoryUrl(slug, 'en');
+const hasCounterpart = altPath !== localizePath('/categories/', 'en');
+const alternates = hasCounterpart ? { es: categoryUrl('es', slug), en: altPath } : undefined;
+---
+
+<CategoryPage lang="es" {category} {posts} {altPath} {alternates} />

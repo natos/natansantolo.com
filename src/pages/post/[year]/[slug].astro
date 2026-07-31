@@ -1,0 +1,26 @@
+---
+import PostSingle from '../../../components/pages/PostSingle.astro';
+import { getPosts, postYear, counterpartPostUrl } from '../../../lib/content';
+import { postUrl } from '../../../i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts('en');
+  return posts.map((post, i) => ({
+    params: { year: String(postYear(post)), slug: post.data.slug },
+    props: {
+      post,
+      // Newest-first order: prev = newer, next = older (matches Hugo PrevInSection).
+      prev: posts[i - 1],
+      next: posts[i + 1],
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post, prev, next } = Astro.props;
+const altPath = await counterpartPostUrl(post, 'es');
+const self = postUrl('en', postYear(post), post.data.slug);
+const alternates = { en: self, es: altPath };
+---
+
+<PostSingle {post} lang="en" {prev} {next} {altPath} {alternates} />

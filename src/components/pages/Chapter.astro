@@ -1,0 +1,103 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../ReadingProgress.astro';
+import type { Book } from '../../lib/content';
+import { getChapters } from '../../lib/content';
+import { useTranslations, chapterUrl, type Lang } from '../../i18n';
+
+interface Props {
+  chapter: Book;
+  lang: Lang;
+  altPath?: string;
+  alternates?: Partial<Record<Lang, string>>;
+}
+const { chapter, lang, altPath, alternates } = Astro.props;
+const t = useTranslations(lang);
+const { Content, headings } = await render(chapter);
+const chapters = await getChapters(lang);
+const currentSlug = chapter.data.slug;
+const idx = chapters.findIndex((c) => c.data.slug === currentSlug);
+const prev = idx > 0 ? chapters[idx - 1] : undefined;
+// Only show h2 headings in the per-chapter mini TOC.
+const toc = headings.filter((h) => h.depth === 2);
+const { title, image, date } = chapter.data;
+const locale = lang === 'es' ? 'es-ES' : 'en-US';
+---
+
+<BaseLayout title={title} altPath={altPath} {alternates} extraStyles={['/assets/css/book.css']}>
+  <ReadingProgress />
+  <aside class="chapter-toc">
+    <div class="toc-inner">
+      <ul>
+        {
+          chapters.map((c) => {
+            const isCurrent = c.data.slug === currentSlug;
+            return (
+              <li>
+                <a href={chapterUrl(lang, c.data.slug)}>{c.data.title}</a>
+                {isCurrent && toc.length > 0 && (
+                  <ul>
+                    {toc.map((h) => (
+                      <li>
+                        <a href={`#${h.slug}`}>{h.text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+    <div class="chapter-toc-toggle" tabindex="0" title={t('book.toc')}>
+      &#9776;
+    </div>
+  </aside>
+
+  <article class="book-chapter wrap">
+    {
+      image && (
+        <figure>
+          <img src={image} alt={title} />
+        </figure>
+      )
+    }
+    <header class="mb-8 text-center">
+      <h1>{title}</h1>
+      {date && <p>{date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}</p>}
+    </header>
+
+    <section class="chapter-content">
+      <Content />
+    </section>
+
+    <nav class="chapter-nav wrap">
+      {
+        prev ? (
+          <a href={chapterUrl(lang, prev.data.slug)}>{prev.data.title}</a>
+        ) : (
+          <span />
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.chapter-toc-toggle');
+    const toc = document.querySelector('.chapter-toc');
+    if (toggle && toc) {
+      const flip = () => toc.classList.toggle('open');
+      toggle.addEventListener('click', flip);
+      toggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          flip();
+        }
+      });
+    }
+  });
+</script>
