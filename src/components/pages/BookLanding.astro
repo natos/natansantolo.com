@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getChapters, getBookIndex, readingTime } from '../../lib/content';
+import { chapterUrl, bookUrl, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath?: string;
+}
+const { lang, altPath } = Astro.props;
+const index = await getBookIndex(lang);
+const chapters = await getChapters(lang);
+const title = index?.data.title ?? 'The Augmented Designer';
+const image = index?.data.image;
+const description = index?.data.description;
+const alternates = { en: bookUrl('en'), es: bookUrl('es') };
+const firstChapter = chapters[0];
+const totalMinutes = chapters.reduce((sum, ch) => sum + readingTime(ch), 0);
+const startLabel = lang === 'es' ? 'Empezar a leer' : 'Start reading';
+const chaptersLabel = lang === 'es' ? 'capítulos' : 'chapters';
+const minLabel = lang === 'es' ? 'min de lectura' : 'min read';
+---
+
+<BaseLayout title={title} altPath={altPath} alternates={alternates} extraStyles={['/assets/css/book.css']}>
+  <main class="wrap book-landing">
+    <section class="book-hero">
+      {
+        image && (
+          <div class="book-hero__cover">
+            <img src={image} alt={title} />
+          </div>
+        )
+      }
+      <div class="book-hero__body">
+        <h1>{title}</h1>
+        {description && <p class="lead">{description}</p>}
+        <p class="book-hero__meta">
+          {chapters.length} {chaptersLabel}
+          <span aria-hidden="true">·</span>
+          {totalMinutes} {minLabel}
+        </p>
+        {
+          firstChapter && (
+            <a class="btn-primary" href={chapterUrl(lang, firstChapter.data.slug)}>
+              {startLabel} <span aria-hidden="true">→</span>
+            </a>
+          )
+        }
+      </div>
+    </section>
+
+    <ol class="chapter-index">
+      {
+        chapters.map((ch) => (
+          <li>
+            <a href={chapterUrl(lang, ch.data.slug)}>
+              <span class="chapter-index__title">{ch.data.title}</span>
+              <span class="chapter-index__time">{readingTime(ch)} {minLabel}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+</BaseLayout>

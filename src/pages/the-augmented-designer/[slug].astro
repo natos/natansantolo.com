@@ -1,0 +1,21 @@
+---
+import Chapter from '../../components/pages/Chapter.astro';
+import { getChapters, counterpartChapterUrl } from '../../lib/content';
+import { chapterUrl } from '../../i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const chapters = await getChapters('en');
+  return chapters.map((chapter) => ({
+    params: { slug: chapter.data.slug },
+    props: { chapter },
+  }));
+}) satisfies GetStaticPaths;
+
+const { chapter } = Astro.props;
+const altPath = await counterpartChapterUrl(chapter, 'es');
+const self = chapterUrl('en', chapter.data.slug);
+const alternates = { en: self, es: altPath };
+---
+
+<Chapter {chapter} lang="en" {altPath} {alternates} />

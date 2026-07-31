@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleListItem from '../ArticleListItem.astro';
+import type { Post } from '../../lib/content';
+import { type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  tag: string;
+  posts: Post[];
+  altPath?: string;
+  alternates?: Partial<Record<Lang, string>>;
+}
+const { lang, tag, posts, altPath, alternates } = Astro.props;
+---
+
+<BaseLayout title={tag} altPath={altPath} {alternates}>
+  <header>
+    <h2 id="title">{tag}</h2>
+  </header>
+  <main class="wrap">
+    <section class="articles">
+      {posts.map((post) => <ArticleListItem post={post} lang={lang} />)}
+    </section>
+  </main>
+</BaseLayout>

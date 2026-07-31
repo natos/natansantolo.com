@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, bookUrl } from '../i18n';
+const lang = getLangFromUrl(Astro.url);
+const book = bookUrl(lang);
+---
+
+<section class="about">
+  {
+    lang === 'es' ? (
+      <>
+        <p>
+          En la última década, he liderado equipos de diseño y dado forma a productos en mercados
+          globales. Mi trabajo se sitúa en la intersección entre la investigación de usuarios, la
+          estrategia de producto y el cambio organizacional, ayudando a las empresas a tomar mejores
+          decisiones más rápido al entender de verdad a sus usuarios.
+        </p>
+        <p>
+          Me interesa especialmente cómo el diseño y la IA pueden trabajar juntos sin la
+          exageración. Por eso escribí <a href={book}>El Diseñador Aumentado</a>, un libro para
+          diseñadores que quieren entender cómo la <strong>IA puede amplificar su trabajo</strong>,
+          no reemplazarlo.
+        </p>
+        <p>En estos días, reparto mi tiempo entre:</p>
+        <ul>
+          <li>
+            Asesorar a diseñadores y fundadores en{' '}
+            <a href="https://adplist.org/mentors/natan-santolo">ADPList</a>
+          </li>
+          <li>Escribir sobre diseño, IA y el futuro del trabajo creativo</li>
+          <li>Trabajar con equipos para construir mejores productos</li>
+        </ul>
+      </>
+    ) : (
+      <>
+        <p>
+          In the last decade, I've led design teams and shaped products across global markets. My
+          work sits at the intersection of user research, product strategy, and organizational
+          change, helping companies make better decisions faster by actually understanding their
+          users.
+        </p>
+        <p>
+          I'm especially interested in how design and AI can work together without the hype. That's
+          why I wrote <a href={book}>The Augmented Designer</a>, a book for designers who want to
+          understand how <strong>AI can amplify their work</strong>, not replace it.
+        </p>
+        <p>These days, I split my time between:</p>
+        <ul>
+          <li>
+            Coaching designers and founders on{' '}
+            <a href="https://adplist.org/mentors/natan-santolo">ADPList</a>
+          </li>
+          <li>Writing about design, AI, and the future of creative work</li>
+          <li>Working with teams to build better products</li>
+        </ul>
+      </>
+    )
+  }
+</section>

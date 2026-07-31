@@ -1,0 +1,36 @@
+---
+import type { Post } from '../lib/content';
+import { postYear, readingTime } from '../lib/content';
+import { postUrl, type Lang } from '../i18n';
+
+interface Props {
+  post: Post;
+  lang: Lang;
+  featured?: boolean;
+}
+const { post, lang, featured = false } = Astro.props;
+const url = postUrl(lang, postYear(post), post.data.slug);
+const date = post.data.date;
+const locale = lang === 'es' ? 'es-ES' : 'en-US';
+const dateLabel = date.toLocaleDateString(locale, {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+const dateTime = date.toISOString().slice(0, 10);
+const minutes = readingTime(post);
+const readLabel = lang === 'es' ? 'min de lectura' : 'min read';
+---
+
+<article class:list={['card', { 'card--featured': featured }]}>
+  <p class="card__meta">
+    <time datetime={dateTime}>{dateLabel}</time>
+    <span class="card__dot" aria-hidden="true">·</span>
+    <span>{minutes} {readLabel}</span>
+  </p>
+  <h3 class="card__title"><a href={url}>{post.data.title}</a></h3>
+  {post.data.description && <p class="card__excerpt">{post.data.description}</p>}
+  <a class="card__more" href={url} aria-label={post.data.title}>
+    {lang === 'es' ? 'Leer' : 'Read'} <span aria-hidden="true">→</span>
+  </a>
+</article>

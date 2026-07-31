@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../Header.astro';
+import Intro from '../Intro.astro';
+import Arcade from '../Arcade.astro';
+import BookBand from '../BookBand.astro';
+import ArticleListItem from '../ArticleListItem.astro';
+import { getPosts } from '../../lib/content';
+import { useTranslations, localizePath, sections, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath: string;
+}
+const { lang, altPath } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPosts(lang);
+const articlesUrl = localizePath(`/${sections.post[lang]}/`, lang);
+---
+
+<BaseLayout altPath={altPath} alternates={{ en: '/', es: '/es/' }}>
+  <main class="home">
+    <div class="wrap">
+      <Header />
+    </div>
+
+    <section class="section wrap" aria-labelledby="about-heading">
+      <p class="eyebrow" id="about-heading">{t('home.aboutEyebrow')}</p>
+      <Intro />
+    </section>
+
+    <BookBand />
+
+    <section class="section wrap" aria-labelledby="writing-heading">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow">{t('home.writingEyebrow')}</p>
+          <h2 class="section__title" id="writing-heading">{t('home.writingTitle')}</h2>
+        </div>
+        <a class="section__more" href={articlesUrl}>
+          {t('home.viewAll')} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="articles">
+        {posts.map((post, i) => <ArticleListItem post={post} lang={lang} featured={i === 0} />)}
+      </div>
+    </section>
+
+    <section class="section wrap playground" aria-labelledby="play-heading">
+      <p class="eyebrow" id="play-heading">{t('home.playEyebrow')}</p>
+      <Arcade />
+    </section>
+  </main>
+</BaseLayout>

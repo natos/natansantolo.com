@@ -1,0 +1,17 @@
+---
+import { socialLinks } from '../data/social';
+import Icon from './Icon.astro';
+---
+
+<nav class="social-nav">
+  {
+    socialLinks.map((link) => (
+      <a class="social-nav-item" href={link.url} title={link.name} target="_blank" rel="noopener">
+        <span class="social-nav-item-icon">
+          <Icon name={link.icon as 'linkedin'} />
+        </span>
+        <span class="social-nav-item-label">{link.name}</span>
+      </a>
+    ))
+  }
+</nav>

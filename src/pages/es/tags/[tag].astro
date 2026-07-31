@@ -1,0 +1,22 @@
+---
+import TagPage from '../../../components/pages/TagPage.astro';
+import { getTags, tagSlug, counterpartTagUrl } from '../../../lib/content';
+import { tagUrl, localizePath } from '../../../i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const tags = await getTags('es');
+  return [...tags.entries()].map(([slug, posts]) => {
+    const display = posts[0]?.data.tags.find((x) => tagSlug(x) === slug) ?? slug;
+    return { params: { tag: slug }, props: { tag: display, posts } };
+  });
+}) satisfies GetStaticPaths;
+
+const { tag, posts } = Astro.props;
+const { tag: slug } = Astro.params;
+const altPath = await counterpartTagUrl(slug, 'en');
+const hasCounterpart = altPath !== localizePath('/tags/', 'en');
+const alternates = hasCounterpart ? { es: tagUrl('es', slug), en: altPath } : undefined;
+---
+
+<TagPage lang="es" {tag} {posts} {altPath} {alternates} />
