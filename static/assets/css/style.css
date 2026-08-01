@@ -684,6 +684,32 @@ main.wrap {
 }
 
 /* =========================================================
+   404 page
+   ========================================================= */
+.not-found {
+  min-height: 56vh;
+  display: grid;
+  align-content: center;
+  gap: var(--space-4);
+}
+
+.not-found h1 {
+  margin: 0;
+  max-width: 18ch;
+}
+
+.not-found__lead {
+  max-width: 54ch;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* =========================================================
    Site footer — three columns + a bottom bar.
    ========================================================= */
 .site-footer {
