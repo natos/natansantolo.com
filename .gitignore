@@ -11,3 +11,10 @@ deploy.sh
 *.mov
 *.mp3
 *.wav
+
+# Editor / local environment
+.idea/
+.env
+.env.*
+!.env.example
+*.local
