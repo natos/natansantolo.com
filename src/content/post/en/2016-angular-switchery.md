@@ -1,6 +1,6 @@
 ---
 title: "Angular Switchery"
-description: "I built a directive with two-way binding support for Switchery."
+description: "A practical case study on wrapping a UI library inside AngularJS without breaking two-way data flow."
 date: "2016-02-27"
 tags:
   - "components"
@@ -11,7 +11,7 @@ categories:
   - "JavaScript"
   - "Components"
 slug: "angular-switchery"
-draft: true
+draft: false
 lang: "en"
 translationKey: "angular-switchery"
 ---
@@ -22,14 +22,69 @@ translationKey: "angular-switchery"
 
 ![Spaaza Screenshot](/assets/images/angular-switchery/spaaza.png)
 
-I've used it along different projects, I'm really happy with it. But when I tried to included in a project using AngularJS, I found a few challenges. Although there are a few directives around (like [NgSwitchery](https://github.com/servergrove/NgSwitchery)), I couldn't find one with support for two-way binding, I needed to keep my models updated. So I went for it and built a new directive.
+I used it in multiple projects and loved the visual quality, but the AngularJS integration was fragile. Existing directives worked for initialization, yet model sync was inconsistent in edge cases.
+
+So I built a directive focused on one thing: **keep the UI and the Angular model in sync at all times**.
 
 ![Spaaza Screenshot](/assets/images/angular-switchery/console.png)
 
-Here's [Angular Switchery](http://natos.github.io/angular-switchery/), [a directive](https://docs.angularjs.org/guide/directive) that transform a simple checkbox into a switch, and supports two way bindings to scope variables, to keep view and data in sync. You'll find the code and install instructions in [Github](https://github.com/natos/angular-switchery).
+The result was [Angular Switchery](http://natos.github.io/angular-switchery/), [a directive](https://docs.angularjs.org/guide/directive) that transforms a plain checkbox into a switch and supports reliable two-way binding.
 
-Run this JSFiddle to see it working or [check the demo](http://natos.github.io/angular-switchery/)
+You can still find the source and setup notes on [GitHub](https://github.com/natos/angular-switchery).
 
-{{< jsfiddle natos s2bkr5g9 >}}
+## What made this integration tricky
 
-I hope you find this useful :)
+UI libraries that directly mutate DOM state can bypass framework state updates.
+
+In AngularJS terms, that usually means one of two bugs:
+
+- switch changes visually but scope value stays stale
+- scope value changes but visual switch does not update
+
+The directive had to bridge both directions.
+
+## Simplified directive pattern
+
+```js
+app.directive('switchery', function () {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+      const sw = new Switchery(element[0], { size: attrs.switcherySize || 'default' });
+
+      function renderFromModel(value) {
+        element[0].checked = !!value;
+        if (sw.setPosition) sw.setPosition();
+      }
+
+      ngModel.$render = function () {
+        renderFromModel(ngModel.$viewValue);
+      };
+
+      element.on('change', function () {
+        scope.$applyAsync(function () {
+          ngModel.$setViewValue(element[0].checked);
+        });
+      });
+
+      scope.$on('$destroy', function () {
+        element.off('change');
+      });
+    }
+  };
+});
+```
+
+## Lessons that still apply today
+
+- wrap third-party components behind a thin adapter layer
+- define one source of truth for state
+- clean up listeners to avoid memory leaks
+- test interaction, not only initial render
+
+Even if AngularJS is legacy now, the integration lesson is timeless: whenever a UI library and a framework disagree about state ownership, build a clear contract.
+
+The specific stack changes, but that principle keeps shipping velocity high.
+
+If you are maintaining old AngularJS apps, these adapter patterns are often the fastest path to stability.

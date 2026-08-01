@@ -16,9 +16,10 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: var(--fs-200);
   line-height: var(--leading-normal);
+  letter-spacing: 0.003em;
   color: var(--color-text);
   text-rendering: optimizeLegibility;
 }
@@ -29,9 +30,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  font-weight: 700;
+  font-weight: 600;
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: -0.01em;
   color: var(--color-heading);
   margin-top: var(--space-6);
   margin-bottom: var(--space-4);
@@ -39,14 +40,14 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-h1 { font-size: var(--fs-700); max-width: 20ch; }
-h2 { font-size: var(--fs-600); max-width: 28ch; }
+h1 { font-size: var(--fs-700); max-width: 17ch; }
+h2 { font-size: var(--fs-600); max-width: 24ch; }
 h3 { font-size: var(--fs-500); max-width: 32ch; }
 h4 { font-size: var(--fs-400); }
 h5 { font-size: var(--fs-300); }
 h6 {
   font-size: var(--fs-300);
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -64,8 +65,11 @@ p {
 .lead,
 p.lead {
   font-size: var(--fs-300);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--color-text-muted);
-  line-height: var(--leading-snug);
+  line-height: 1.5;
 }
 
 small {
@@ -112,10 +116,10 @@ blockquote {
   padding: var(--space-2) 0 var(--space-2) var(--space-5);
   border-left: 4px solid var(--color-accent);
   color: var(--color-text-muted);
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: var(--fs-300);
-  line-height: var(--leading-snug);
+  line-height: 1.45;
 }
 
 blockquote p:last-child {
@@ -129,6 +133,7 @@ figure {
 
 figcaption {
   margin-top: var(--space-2);
+  font-family: var(--font-sans);
   font-size: var(--fs-100);
   color: var(--color-text-muted);
   text-align: center;
@@ -179,6 +184,7 @@ pre code {
 
 input, button, textarea, select {
   font: inherit;
+  font-family: var(--font-sans);
   color: inherit;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
