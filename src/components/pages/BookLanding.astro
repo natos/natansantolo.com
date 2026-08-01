@@ -1,19 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getChapters, getBookIndex, readingTime } from '../../lib/content';
-import { chapterUrl, bookUrl, type Lang } from '../../i18n';
+import { chapterUrlByKey, bookUrlByKey, type BookKey, type Lang } from '../../i18n';
 
 interface Props {
   lang: Lang;
+  bookKey?: BookKey | string;
+  coverImage?: string;
+  fallbackTitle?: string;
+  fallbackDescription?: string;
   altPath?: string;
 }
-const { lang, altPath } = Astro.props;
-const index = await getBookIndex(lang);
-const chapters = await getChapters(lang);
-const title = index?.data.title ?? 'The Augmented Designer';
-const image = '/assets/images/the-augmented-designer/introduction.png';
-const description = index?.data.description;
-const alternates = { en: bookUrl('en'), es: bookUrl('es') };
+const {
+  lang,
+  altPath,
+  bookKey = 'the-augmented-designer',
+  coverImage,
+  fallbackTitle,
+  fallbackDescription,
+} = Astro.props;
+const index = await getBookIndex(lang, bookKey);
+const chapters = await getChapters(lang, bookKey);
+const title = index?.data.title ?? fallbackTitle ?? 'The Augmented Designer';
+const image = coverImage ?? '/assets/images/the-augmented-designer/introduction.png';
+const description = index?.data.description ?? fallbackDescription;
+const alternates = { en: bookUrlByKey('en', bookKey), es: bookUrlByKey('es', bookKey) };
 const firstChapter = chapters[0];
 const totalMinutes = chapters.reduce((sum, ch) => sum + readingTime(ch), 0);
 const startLabel = lang === 'es' ? 'Empezar a leer' : 'Start reading';
@@ -41,7 +52,7 @@ const minLabel = lang === 'es' ? 'min de lectura' : 'min read';
         </p>
         {
           firstChapter && (
-            <a class="btn-primary" href={chapterUrl(lang, firstChapter.data.slug)}>
+            <a class="btn-primary" href={chapterUrlByKey(lang, bookKey, firstChapter.data.slug)}>
               {startLabel} <span aria-hidden="true">→</span>
             </a>
           )
@@ -53,7 +64,7 @@ const minLabel = lang === 'es' ? 'min de lectura' : 'min read';
       {
         chapters.map((ch) => (
           <li>
-            <a href={chapterUrl(lang, ch.data.slug)}>
+            <a href={chapterUrlByKey(lang, bookKey, ch.data.slug)}>
               <span class="chapter-index__title">{ch.data.title}</span>
               <span class="chapter-index__time">{readingTime(ch)} {minLabel}</span>
             </a>

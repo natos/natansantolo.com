@@ -1,5 +1,14 @@
 ---
-import { getLangFromUrl, useTranslations, homeUrl, bookUrl, localizePath, sections } from '../i18n';
+import {
+  getLangFromUrl,
+  useTranslations,
+  homeUrl,
+  bookUrlByKey,
+  booksHubUrl,
+  localizePath,
+  sections,
+  books,
+} from '../i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
@@ -11,11 +20,16 @@ const { altPath } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const articlesUrl = localizePath(`/${sections.post[lang]}/`, lang);
-const bookHref = bookUrl(lang);
+const booksHref = booksHubUrl(lang);
+const designerBookHref = bookUrlByKey(lang, 'the-augmented-designer');
+const teamBookHref = bookUrlByKey(lang, 'the-augmented-team');
 
 const path = Astro.url.pathname;
 const isWriting = path.includes(`/${sections.post[lang]}`);
-const isBook = path.includes(`/${sections.book[lang]}`);
+const isBook = path.includes(`/${books['the-augmented-designer'][lang]}`);
+const isTeamBook = path.includes(`/${books['the-augmented-team'][lang]}`);
+const isBooksHub = path.includes(`/${sections.booksHub[lang]}`);
+const isBooks = isBook || isTeamBook || isBooksHub;
 ---
 
 <nav class="site-nav" id="top" aria-label="Primary">
@@ -41,9 +55,22 @@ const isBook = path.includes(`/${sections.book[lang]}`);
       <a href={articlesUrl} class:list={['site-nav__link', { 'is-active': isWriting }]}>
         {t('nav.articles')}
       </a>
-      <a href={bookHref} class:list={['site-nav__link', { 'is-active': isBook }]}>
-        {t('nav.book')}
-      </a>
+      <details class="site-nav__dropdown" open={isBooks ? true : undefined}>
+        <summary class:list={['site-nav__link', 'site-nav__dropdown-trigger', { 'is-active': isBooks }]}>
+          {t('nav.book')}
+        </summary>
+        <div class="site-nav__dropdown-menu">
+          <a href={teamBookHref} class:list={['site-nav__dropdown-item', { 'is-active': isTeamBook }]}>
+            {t('nav.bookTeam')}
+          </a>
+          <a href={designerBookHref} class:list={['site-nav__dropdown-item', { 'is-active': isBook }]}>
+            {t('nav.bookDesigner')}
+          </a>
+          <a href={booksHref} class:list={['site-nav__dropdown-item', 'site-nav__dropdown-item--all', { 'is-active': isBooksHub }]}>
+            {t('nav.booksAll')}
+          </a>
+        </div>
+      </details>
     </div>
 
     <div class="site-nav__utils">

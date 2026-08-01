@@ -1,24 +1,36 @@
 ---
-import { getLangFromUrl, useTranslations, bookUrl } from '../i18n';
+import { getLangFromUrl, useTranslations, bookUrlByKey } from '../i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const href = bookUrl(lang);
-const cover = '/assets/images/the-augmented-designer/introduction.png';
+
+const latestBook = {
+  title: t('home.bookTitle'),
+  text: t('home.bookText'),
+  cta: t('home.bookCta'),
+  href: bookUrlByKey(lang, 'the-augmented-team'),
+  image: '/assets/images/the-augmented-designer/divider.png',
+};
 ---
 
 <section class="book-band" aria-labelledby="book-band-title">
   <div class="book-band__inner">
-    <div class="book-band__cover">
-      <img src={cover} alt={t('home.bookTitle')} loading="lazy" />
-    </div>
-    <div class="book-band__body">
+    <div class="book-band__header">
       <p class="eyebrow">{t('home.bookEyebrow')}</p>
-      <h2 id="book-band-title" class="book-band__title">{t('home.bookTitle')}</h2>
-      <p class="book-band__text">{t('home.bookText')}</p>
-      <a class="btn-primary btn-primary--invert" href={href}>
-        {t('home.bookCta')} <span aria-hidden="true">→</span>
-      </a>
+      <h2 id="book-band-title" class="book-band__title">{t('nav.book')}</h2>
     </div>
+
+    <article class="book-featured">
+      <div class="book-featured__cover">
+        <img src={latestBook.image} alt={latestBook.title} loading="lazy" />
+      </div>
+      <div class="book-featured__body">
+        <h3 class="book-featured__title">{latestBook.title}</h3>
+        <p class="book-featured__text">{latestBook.text}</p>
+        <a class="btn-primary btn-primary--invert" href={latestBook.href}>
+          {latestBook.cta} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
   </div>
 </section>

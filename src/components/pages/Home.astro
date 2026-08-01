@@ -42,7 +42,7 @@ const articlesUrl = localizePath(`/${sections.post[lang]}/`, lang);
         </a>
       </div>
       <div class="articles">
-        {posts.map((post, i) => <ArticleListItem post={post} lang={lang} featured={i === 0} />)}
+        {posts.slice(0, 3).map((post, i) => <ArticleListItem post={post} lang={lang} featured={i === 0} />)}
       </div>
     </section>
 

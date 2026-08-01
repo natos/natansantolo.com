@@ -1,8 +1,8 @@
 ---
-import { getLangFromUrl, useTranslations, bookUrl, localizePath, sections } from '../i18n';
+import { getLangFromUrl, useTranslations, bookUrlByKey, localizePath, sections } from '../i18n';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const book = bookUrl(lang);
+const teamBook = bookUrlByKey(lang, 'the-augmented-team');
 const articles = localizePath(`/${sections.post[lang]}/`, lang);
 ---
 
@@ -12,7 +12,7 @@ const articles = localizePath(`/${sections.post[lang]}/`, lang);
     <h1 class="hero__name">Natan Santolo</h1>
     <p class="lead hero__lead">{t('hero.lead')}</p>
     <div class="hero__cta">
-      <a class="btn-primary" href={book}>
+      <a class="btn-primary" href={teamBook}>
         {t('hero.ctaBook')} <span aria-hidden="true">→</span>
       </a>
       <a class="btn-ghost" href={articles}>{t('hero.ctaWriting')}</a>

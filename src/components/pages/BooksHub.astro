@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getBookIndex, getChapters, readingTime } from '../../lib/content';
+import { booksHubUrl, bookUrlByKey, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath?: string;
+}
+
+const { lang, altPath } = Astro.props;
+
+const [teamIndex, designerIndex] = await Promise.all([
+  getBookIndex(lang, 'the-augmented-team'),
+  getBookIndex(lang, 'the-augmented-designer'),
+]);
+
+const [teamChapters, designerChapters] = await Promise.all([
+  getChapters(lang, 'the-augmented-team'),
+  getChapters(lang, 'the-augmented-designer'),
+]);
+
+const title = lang === 'es' ? 'Libros' : 'Books';
+const lead =
+  lang === 'es'
+    ? 'Dos libros sobre diseño, IA y transformación: uno para la práctica individual y otro para escalar en equipo.'
+    : 'Two books on design, AI, and transformation: one for individual practice and one for team-scale execution.';
+
+const entries = [
+  {
+    key: 'the-augmented-team',
+    title: teamIndex?.data.title ?? (lang === 'es' ? 'El Equipo Aumentado' : 'The Augmented Team'),
+    description:
+      teamIndex?.data.description ??
+      (lang === 'es'
+        ? 'Transformación de equipos: coaching, infraestructura y escala organizacional.'
+        : 'Team transformation: coaching, infrastructure, and organizational scale.'),
+    href: bookUrlByKey(lang, 'the-augmented-team'),
+    image: '/assets/images/the-augmented-designer/divider.png',
+    chapterCount: teamChapters.length,
+    minutes: teamChapters.reduce((sum, chapter) => sum + readingTime(chapter), 0),
+    featured: true,
+  },
+  {
+    key: 'the-augmented-designer',
+    title:
+      designerIndex?.data.title ??
+      (lang === 'es' ? 'El Diseñador Aumentado' : 'The Augmented Designer'),
+    description:
+      designerIndex?.data.description ??
+      (lang === 'es'
+        ? 'Guía de campo para amplificar criterio y craft con IA.'
+        : 'A field guide to amplify design judgment and craft with AI.'),
+    href: bookUrlByKey(lang, 'the-augmented-designer'),
+    image: '/assets/images/the-augmented-designer/introduction.png',
+    chapterCount: designerChapters.length,
+    minutes: designerChapters.reduce((sum, chapter) => sum + readingTime(chapter), 0),
+    featured: false,
+  },
+];
+
+const alternates = { en: booksHubUrl('en'), es: booksHubUrl('es') };
+const chapterLabel = lang === 'es' ? 'capítulos' : 'chapters';
+const minLabel = lang === 'es' ? 'min de lectura' : 'min read';
+const ctaLabel = lang === 'es' ? 'Explorar libro' : 'Explore book';
+---
+
+<BaseLayout title={title} description={lead} altPath={altPath} alternates={alternates}>
+  <main class="wrap books-hub">
+    <header class="books-hub__header">
+      <p class="eyebrow">{title}</p>
+      <h1>{title}</h1>
+      <p class="lead">{lead}</p>
+    </header>
+
+    <section class="books-grid" aria-label={title}>
+      {
+        entries.map((book) => (
+          <article class:list={['book-card', { 'book-card--featured': book.featured }]}>
+            <div class="book-card__cover">
+              <img src={book.image} alt={book.title} loading="lazy" />
+            </div>
+            <div class="book-card__body">
+              <h2>{book.title}</h2>
+              <p>{book.description}</p>
+              <p class="book-card__meta">
+                {book.chapterCount} {chapterLabel}
+                <span aria-hidden="true">·</span>
+                {book.minutes} {minLabel}
+              </p>
+              <a class:list={['book-card__cta', { 'btn-primary': book.featured, 'btn-ghost': !book.featured }]} href={book.href}>
+                {ctaLabel} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</BaseLayout>

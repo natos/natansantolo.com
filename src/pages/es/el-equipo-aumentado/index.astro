@@ -1,0 +1,13 @@
+---
+import BookLanding from '../../../components/pages/BookLanding.astro';
+import { bookUrlByKey } from '../../../i18n';
+---
+
+<BookLanding
+  lang="es"
+  bookKey="the-augmented-team"
+  altPath={bookUrlByKey('en', 'the-augmented-team')}
+  fallbackTitle="El Equipo Aumentado"
+  fallbackDescription="Traducción en progreso. Puedes comenzar por la edición en inglés."
+  coverImage="/assets/images/the-augmented-designer/divider.png"
+/>

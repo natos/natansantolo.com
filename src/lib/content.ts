@@ -1,8 +1,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import {
   postUrl,
-  chapterUrl,
-  bookUrl,
+  chapterUrlByKey,
+  bookUrlByKey,
   homeUrl,
   tagUrl,
   categoryUrl,
@@ -12,7 +12,20 @@ import {
 import { tagMap, categoryMap, translateSlug } from '../i18n/taxonomy';
 
 export type Post = CollectionEntry<'post'>;
-export type Book = CollectionEntry<'book'>;
+type BookDesigner = CollectionEntry<'bookDesigner'>;
+type BookTeam = CollectionEntry<'bookTeam'>;
+export type Book = BookDesigner | BookTeam;
+
+function isTeamBookKey(bookKey: string): boolean {
+  return bookKey === 'the-augmented-team';
+}
+
+async function getBookEntries(bookKey: string): Promise<Book[]> {
+  if (isTeamBookKey(bookKey)) {
+    return (await getCollection('bookTeam')) as Book[];
+  }
+  return (await getCollection('bookDesigner')) as Book[];
+}
 
 const isProd = import.meta.env.PROD;
 
@@ -25,17 +38,21 @@ export async function getPosts(lang: Lang): Promise<Post[]> {
 }
 
 /** Book chapters (excluding the index) for a language, ordered by weight. */
-export async function getChapters(lang: Lang): Promise<Book[]> {
-  const chapters = await getCollection('book', ({ data }) => {
-    return data.lang === lang && !data.isIndex && (!isProd || data.draft === false);
+export async function getChapters(lang: Lang, bookKey = 'the-augmented-designer'): Promise<Book[]> {
+  const entries = await getBookEntries(bookKey);
+  const chapters = entries.filter((entry) => {
+    return entry.data.lang === lang && !entry.data.isIndex && (!isProd || entry.data.draft === false);
   });
   return chapters.sort((a, b) => a.data.weight - b.data.weight);
 }
 
 /** The book landing page entry for a language. */
-export async function getBookIndex(lang: Lang): Promise<Book | undefined> {
-  const entries = await getCollection('book', ({ data }) => data.lang === lang && data.isIndex);
-  return entries[0];
+export async function getBookIndex(
+  lang: Lang,
+  bookKey = 'the-augmented-designer'
+): Promise<Book | undefined> {
+  const entries = await getBookEntries(bookKey);
+  return entries.find((entry) => entry.data.lang === lang && entry.data.isIndex);
 }
 
 /** Four-digit year for a post. */
@@ -139,11 +156,20 @@ export async function counterpartPostUrl(post: Post, other: Lang): Promise<strin
 }
 
 /** URL of a chapter's counterpart in the other language (falls back to book landing). */
-export async function counterpartChapterUrl(chapter: Book, other: Lang): Promise<string> {
-  const matches = await getCollection('book', ({ data }) => {
-    return data.lang === other && !data.isIndex && data.translationKey === chapter.data.translationKey;
+export async function counterpartChapterUrl(
+  chapter: Book,
+  other: Lang,
+  bookKey = 'the-augmented-designer'
+): Promise<string> {
+  const entries = await getBookEntries(bookKey);
+  const matches = entries.filter((entry) => {
+    return (
+      entry.data.lang === other &&
+      !entry.data.isIndex &&
+      entry.data.translationKey === chapter.data.translationKey
+    );
   });
   const target = matches[0];
-  if (!target) return bookUrl(other);
-  return chapterUrl(other, target.data.slug);
+  if (!target) return bookUrlByKey(other, bookKey);
+  return chapterUrlByKey(other, bookKey, target.data.slug);
 }

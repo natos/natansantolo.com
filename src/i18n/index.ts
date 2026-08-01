@@ -10,7 +10,15 @@ export type Lang = keyof typeof languages;
 export const sections = {
   post: { en: 'post', es: 'articulos' },
   book: { en: 'the-augmented-designer', es: 'el-disenador-aumentado' },
+  booksHub: { en: 'books', es: 'libros' },
 } as const;
+
+export const books = {
+  'the-augmented-designer': { en: 'the-augmented-designer', es: 'el-disenador-aumentado' },
+  'the-augmented-team': { en: 'the-augmented-team', es: 'el-equipo-aumentado' },
+} as const;
+
+export type BookKey = keyof typeof books;
 
 // UI chrome strings.
 export const ui = {
@@ -18,22 +26,30 @@ export const ui = {
     'site.description': 'Free-range Design Leader',
     'nav.home': 'natansantolo.com',
     'nav.articles': 'Writing',
-    'nav.book': 'The Book',
+    'nav.book': 'Books',
+    'nav.bookTeam': 'The Augmented Team',
+    'nav.bookDesigner': 'The Augmented Designer',
+    'nav.booksAll': 'View all books',
     'nav.categories': 'Categories',
     'home.articles': 'Articles',
     'hero.lead':
       'I help teams design better products and I write about how design and AI work together.',
-    'hero.ctaBook': 'Read the book',
+    'hero.ctaBook': 'Read The Augmented Team',
+    'hero.ctaBookTeam': 'Read The Augmented Designer',
     'hero.ctaWriting': 'Browse writing',
     'home.aboutEyebrow': 'About',
     'home.writingEyebrow': 'Writing',
     'home.writingTitle': 'Latest articles',
     'home.viewAll': 'View all',
     'home.bookEyebrow': 'The Book',
-    'home.bookTitle': 'The Augmented Designer',
+    'home.bookTitle': 'The Augmented Team',
     'home.bookText':
+      'A continuation focused on team transformation: coaching, infrastructure, and organizational scale.',
+    'home.bookCta': 'Explore the new book',
+    'home.bookTeamTitle': 'The Augmented Designer',
+    'home.bookTeamText':
       'A field guide for designers who want to understand how AI can amplify their work — not replace it.',
-    'home.bookCta': 'Explore the book',
+    'home.bookTeamCta': 'Explore the first book',
     'home.playEyebrow': 'Playground',
     'footer.tagline': 'Free-range Design Leader — writing about design, AI, and creative work.',
     'footer.explore': 'Explore',
@@ -58,22 +74,30 @@ export const ui = {
     'site.description': 'Líder de Diseño en libertad',
     'nav.home': 'natansantolo.com',
     'nav.articles': 'Escritos',
-    'nav.book': 'El Libro',
+    'nav.book': 'Libros',
+    'nav.bookTeam': 'El Equipo Aumentado',
+    'nav.bookDesigner': 'El Diseñador Aumentado',
+    'nav.booksAll': 'Ver todos los libros',
     'nav.categories': 'Categorías',
     'home.articles': 'Artículos',
     'hero.lead':
       'Ayudo a los equipos a diseñar mejores productos y escribo sobre cómo el diseño y la IA trabajan juntos.',
-    'hero.ctaBook': 'Leer el libro',
+    'hero.ctaBook': 'Leer El Equipo Aumentado',
+    'hero.ctaBookTeam': 'Leer El Diseñador Aumentado',
     'hero.ctaWriting': 'Ver escritos',
     'home.aboutEyebrow': 'Sobre mí',
     'home.writingEyebrow': 'Escritos',
     'home.writingTitle': 'Últimos artículos',
     'home.viewAll': 'Ver todo',
     'home.bookEyebrow': 'El Libro',
-    'home.bookTitle': 'El Diseñador Aumentado',
+    'home.bookTitle': 'El Equipo Aumentado',
     'home.bookText':
+      'Una continuación enfocada en transformación de equipos: coaching, infraestructura y escala organizacional.',
+    'home.bookCta': 'Explorar el libro nuevo',
+    'home.bookTeamTitle': 'El Diseñador Aumentado',
+    'home.bookTeamText':
       'Una guía práctica para diseñadores que quieren entender cómo la IA puede amplificar su trabajo — no reemplazarlo.',
-    'home.bookCta': 'Explorar el libro',
+    'home.bookTeamCta': 'Explorar el primer libro',
     'home.playEyebrow': 'Zona de juego',
     'footer.tagline': 'Líder de Diseño en libertad — escribiendo sobre diseño, IA y trabajo creativo.',
     'footer.explore': 'Explorar',
@@ -125,12 +149,31 @@ export function postUrl(lang: Lang, year: string | number, slug: string): string
 
 /** Build the book landing URL for a given language. */
 export function bookUrl(lang: Lang): string {
-  return localizePath(`/${sections.book[lang]}/`, lang);
+  return bookUrlByKey(lang, 'the-augmented-designer');
 }
 
 /** Build a book chapter URL for a given language. */
 export function chapterUrl(lang: Lang, slug: string): string {
-  return localizePath(`/${sections.book[lang]}/${slug}/`, lang);
+  return chapterUrlByKey(lang, 'the-augmented-designer', slug);
+}
+
+/** Build the book landing URL for a specific book key and language. */
+export function bookUrlByKey(lang: Lang, bookKey: BookKey | string): string {
+  const key = bookKey as BookKey;
+  const segment = books[key]?.[lang] ?? bookKey;
+  return localizePath(`/${segment}/`, lang);
+}
+
+/** Build a chapter URL for a specific book key and language. */
+export function chapterUrlByKey(lang: Lang, bookKey: BookKey | string, slug: string): string {
+  const key = bookKey as BookKey;
+  const segment = books[key]?.[lang] ?? bookKey;
+  return localizePath(`/${segment}/${slug}/`, lang);
+}
+
+/** Build the books hub URL for a given language. */
+export function booksHubUrl(lang: Lang): string {
+  return localizePath(`/${sections.booksHub[lang]}/`, lang);
 }
 
 /** Build the home URL for a given language. */

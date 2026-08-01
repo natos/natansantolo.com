@@ -4,18 +4,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReadingProgress from '../ReadingProgress.astro';
 import type { Book } from '../../lib/content';
 import { getChapters } from '../../lib/content';
-import { useTranslations, chapterUrl, type Lang } from '../../i18n';
+import { useTranslations, chapterUrlByKey, type BookKey, type Lang } from '../../i18n';
 
 interface Props {
   chapter: Book;
   lang: Lang;
+  bookKey?: BookKey | string;
   altPath?: string;
   alternates?: Partial<Record<Lang, string>>;
 }
-const { chapter, lang, altPath, alternates } = Astro.props;
+const { chapter, lang, bookKey = 'the-augmented-designer', altPath, alternates } = Astro.props;
 const t = useTranslations(lang);
 const { Content, headings } = await render(chapter);
-const chapters = await getChapters(lang);
+const chapters = await getChapters(lang, bookKey);
 const currentSlug = chapter.data.slug;
 const idx = chapters.findIndex((c) => c.data.slug === currentSlug);
 const prev = idx > 0 ? chapters[idx - 1] : undefined;
@@ -36,7 +37,7 @@ const locale = lang === 'es' ? 'es-ES' : 'en-US';
             const isCurrent = c.data.slug === currentSlug;
             return (
               <li>
-                <a href={chapterUrl(lang, c.data.slug)}>{c.data.title}</a>
+                <a href={chapterUrlByKey(lang, bookKey, c.data.slug)}>{c.data.title}</a>
                 {isCurrent && toc.length > 0 && (
                   <ul>
                     {toc.map((h) => (
@@ -77,7 +78,7 @@ const locale = lang === 'es' ? 'es-ES' : 'en-US';
     <nav class="chapter-nav wrap">
       {
         prev ? (
-          <a class="chapter-nav__link chapter-nav__link--prev" href={chapterUrl(lang, prev.data.slug)}>
+          <a class="chapter-nav__link chapter-nav__link--prev" href={chapterUrlByKey(lang, bookKey, prev.data.slug)}>
             <span class="chapter-nav__dir">← {t('book.prev')}</span>
             <span class="chapter-nav__title">{prev.data.title}</span>
           </a>
@@ -87,7 +88,7 @@ const locale = lang === 'es' ? 'es-ES' : 'en-US';
       }
       {
         next ? (
-          <a class="chapter-nav__link chapter-nav__link--next" href={chapterUrl(lang, next.data.slug)}>
+          <a class="chapter-nav__link chapter-nav__link--next" href={chapterUrlByKey(lang, bookKey, next.data.slug)}>
             <span class="chapter-nav__dir">{t('book.next')} →</span>
             <span class="chapter-nav__title">{next.data.title}</span>
           </a>

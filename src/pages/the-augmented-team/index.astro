@@ -1,0 +1,11 @@
+---
+import BookLanding from '../../components/pages/BookLanding.astro';
+import { bookUrlByKey } from '../../i18n';
+---
+
+<BookLanding
+	lang="en"
+	bookKey="the-augmented-team"
+	altPath={bookUrlByKey('es', 'the-augmented-team')}
+	coverImage="/assets/images/the-augmented-designer/divider.png"
+/>

@@ -26,23 +26,32 @@ const post = defineCollection({
 });
 
 // "The Augmented Designer" book chapters.
-const book = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/book' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    date: z.coerce.date().optional(),
-    slug: z.string(),
-    weight: z.number().default(0),
-    tags: z.array(z.string()).default([]),
-    image: z.string().optional(),
-    draft: z.boolean().default(false),
-    lang: z.enum(locales).default('en'),
-    // Marks the book landing page (_index) vs a chapter.
-    isIndex: z.boolean().default(false),
-    // Links a chapter to its translation. Use the English slug as the key.
-    translationKey: z.string(),
-  }),
+const bookSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  date: z.coerce.date().optional(),
+  slug: z.string(),
+  weight: z.number().default(0),
+  tags: z.array(z.string()).default([]),
+  image: z.string().optional(),
+  draft: z.boolean().default(false),
+  lang: z.enum(locales).default('en'),
+  // Logical book key, e.g. the-augmented-designer, the-augmented-team.
+  book: z.string(),
+  // Marks the book landing page (_index) vs a chapter.
+  isIndex: z.boolean().default(false),
+  // Links a chapter to its translation. Use the English slug as the key.
+  translationKey: z.string(),
 });
 
-export const collections = { post, book };
+const bookDesigner = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/books/the-augmented-designer' }),
+  schema: bookSchema,
+});
+
+const bookTeam = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/books/the-augmented-team' }),
+  schema: bookSchema,
+});
+
+export const collections = { post, bookDesigner, bookTeam };
