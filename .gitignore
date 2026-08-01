@@ -3,12 +3,10 @@ dist/
 .astro/
 node_modules/
 
-# Hugo (legacy — kept during migration)
+# Project ignores
 .DS_Store
 deploy.sh
-public
 .note_*
-.hugo_build.lock
 *.mp4
 *.mov
 *.mp3

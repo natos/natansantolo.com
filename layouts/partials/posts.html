@@ -1,9 +1,0 @@
-<section class="posts">
-  <h2>Thoughts</h2>
-  {{ $posts := where .Site.RegularPages "Section" "post" }}
-  {{ $paginator := .Paginate $posts }}
-    {{ range $paginator.Pages }}
-        {{ .Render "li" }}
-    {{ end }}
-  {{ partial "pagination.html" $paginator }}
-</section>
