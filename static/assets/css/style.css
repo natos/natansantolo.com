@@ -562,14 +562,25 @@ main.wrap {
 }
 @media (min-width: 640px) {
   .book-band__inner {
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 200px 1fr;
     gap: var(--space-7);
   }
 }
 .book-band__cover img {
+  display: block;
   width: 100%;
+  max-width: 200px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
   box-shadow: var(--shadow-lg);
+}
+@media (min-width: 640px) {
+  .book-band__cover img {
+    max-width: none;
+  }
 }
 .book-band__title {
   margin: 0 0 var(--space-3);

@@ -1,12 +1,10 @@
 ---
 import { getLangFromUrl, useTranslations, bookUrl } from '../i18n';
-import { getBookIndex } from '../lib/content';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const index = await getBookIndex(lang);
 const href = bookUrl(lang);
-const cover = index?.data.image ?? '/assets/images/the-augmented-designer/divider.png';
+const cover = '/assets/images/the-augmented-designer/introduction.png';
 ---
 
 <section class="book-band" aria-labelledby="book-band-title">
@@ -15,7 +13,7 @@ const cover = index?.data.image ?? '/assets/images/the-augmented-designer/divide
       <img src={cover} alt={t('home.bookTitle')} loading="lazy" />
     </div>
     <div class="book-band__body">
-      <p class="eyebrow eyebrow--on-accent">{t('home.bookEyebrow')}</p>
+      <p class="eyebrow">{t('home.bookEyebrow')}</p>
       <h2 id="book-band-title" class="book-band__title">{t('home.bookTitle')}</h2>
       <p class="book-band__text">{t('home.bookText')}</p>
       <a class="btn-primary btn-primary--invert" href={href}>

@@ -19,6 +19,7 @@ const chapters = await getChapters(lang);
 const currentSlug = chapter.data.slug;
 const idx = chapters.findIndex((c) => c.data.slug === currentSlug);
 const prev = idx > 0 ? chapters[idx - 1] : undefined;
+const next = idx >= 0 && idx < chapters.length - 1 ? chapters[idx + 1] : undefined;
 // Only show h2 headings in the per-chapter mini TOC.
 const toc = headings.filter((h) => h.depth === 2);
 const { title, image, date } = chapter.data;
@@ -76,7 +77,20 @@ const locale = lang === 'es' ? 'es-ES' : 'en-US';
     <nav class="chapter-nav wrap">
       {
         prev ? (
-          <a href={chapterUrl(lang, prev.data.slug)}>{prev.data.title}</a>
+          <a class="chapter-nav__link chapter-nav__link--prev" href={chapterUrl(lang, prev.data.slug)}>
+            <span class="chapter-nav__dir">← {t('book.prev')}</span>
+            <span class="chapter-nav__title">{prev.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        next ? (
+          <a class="chapter-nav__link chapter-nav__link--next" href={chapterUrl(lang, next.data.slug)}>
+            <span class="chapter-nav__dir">{t('book.next')} →</span>
+            <span class="chapter-nav__title">{next.data.title}</span>
+          </a>
         ) : (
           <span />
         )

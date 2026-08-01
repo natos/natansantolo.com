@@ -307,3 +307,45 @@ body:has(.book-landing) {
   color: var(--color-text-muted);
   font-size: var(--fs-100);
 }
+
+/* Prev / next chapter navigation */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid #f5e6b2;
+}
+.chapter-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-width: 45%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid #f5e6b2;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-standard),
+    background-color var(--dur-fast) var(--ease-standard);
+}
+.chapter-nav__link:hover {
+  border-color: #e6c34a;
+  background: #fbf1cf;
+}
+.chapter-nav__link--next {
+  margin-left: auto;
+  text-align: right;
+}
+.chapter-nav__dir {
+  font-family: "Merriweather Sans", -apple-system, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b38600;
+}
+.chapter-nav__title {
+  font-family: "Merriweather", Georgia, serif;
+  color: #2d2d2d;
+}
