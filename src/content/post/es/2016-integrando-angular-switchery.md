@@ -10,7 +10,7 @@ tags:
 categories:
   - "JavaScript"
   - "Componentes"
-slug: "angular-switchery"
+slug: "integrando-angular-switchery"
 draft: false
 lang: "es"
 translationKey: "angular-switchery"
